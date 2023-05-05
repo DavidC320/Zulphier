@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwdww056mw4p3"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TileDataUi/TileViewer/tile_view_port.gd" id="1_60kgm"]
+[ext_resource type="PackedScene" uid="uid://cn7at7u6n475p" path="res://Scenes/TileData/TileBase.tscn" id="2_6esgj"]
+
+[sub_resource type="Animation" id="Animation_uyp3f"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/Tile")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/Tile:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ma67v"]
+resource_name = "Tile_spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tile")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tile:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.2341, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbk5k"]
+_data = {
+"RESET": SubResource("Animation_uyp3f"),
+"Tile_spin": SubResource("Animation_ma67v")
+}
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+offset_right = 128.0
+offset_bottom = 128.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_60kgm")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(128, 128)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.66478, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.98171, 0.190381, 0, -0.190381, 0.98171, 0, 1.1887, 1.45513)
+cull_mask = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Node3D"]
+root_node = NodePath("../..")
+speed_scale = 0.8
+libraries = {
+"": SubResource("AnimationLibrary_jbk5k")
+}
+
+[node name="TileBase" parent="SubViewport/Node3D" instance=ExtResource("2_6esgj")]

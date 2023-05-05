@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp4sm6nskvw56"]
+
+[ext_resource type="Script" path="res://Scenes/MapMaker/Map.gd" id="1_p2jpj"]
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_p2jpj")

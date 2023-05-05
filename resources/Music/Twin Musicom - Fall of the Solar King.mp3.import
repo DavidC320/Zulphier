@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqpk4vuvt8xa4"
+path="res://.godot/imported/Twin Musicom - Fall of the Solar King.mp3-e2c5a42a32d1588624b6347cd4ab398e.mp3str"
+
+[deps]
+
+source_file="res://resources/Music/Twin Musicom - Fall of the Solar King.mp3"
+dest_files=["res://.godot/imported/Twin Musicom - Fall of the Solar King.mp3-e2c5a42a32d1588624b6347cd4ab398e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

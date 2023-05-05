@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhijwvc3a82vc"]
+
+[ext_resource type="Script" path="res://Scenes/TileData/Jobs/job_data.gd" id="1_g53ej"]
+
+[node name="job_data" type="Node"]
+script = ExtResource("1_g53ej")
+
+[node name="JobTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="JobTimer" to="." method="_on_job_timer_timeout"]

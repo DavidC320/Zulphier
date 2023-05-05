@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4wfnrh64sdyk"
+path="res://.godot/imported/Sierra On-line - Glass Shutters - 06 Glass shutters.mp3-8170ad56e600fb65af108cc8af4d0d10.mp3str"
+
+[deps]
+
+source_file="res://resources/Music/Sierra On-line - Glass Shutters - 06 Glass shutters.mp3"
+dest_files=["res://.godot/imported/Sierra On-line - Glass Shutters - 06 Glass shutters.mp3-8170ad56e600fb65af108cc8af4d0d10.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

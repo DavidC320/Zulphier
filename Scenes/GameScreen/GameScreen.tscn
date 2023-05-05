@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://su82ewsj8tec"]
+
+[ext_resource type="Script" path="res://Scenes/GameScreen/GameScreen.gd" id="1_pcrt0"]
+[ext_resource type="PackedScene" path="res://Scenes/MapMaker/Map.tscn" id="2_ddi4k"]
+
+[node name="GameScreen" type="Node3D"]
+script = ExtResource("1_pcrt0")
+
+[node name="Map" parent="." instance=ExtResource("2_ddi4k")]

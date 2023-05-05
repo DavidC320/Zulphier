@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn7at7u6n475p"]
+
+[ext_resource type="Script" path="res://Scenes/TileData/tile.gd" id="1_vd34r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q0vjo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y45ur"]
+
+[node name="TileBase" type="StaticBody3D"]
+script = ExtResource("1_vd34r")
+
+[node name="TileMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_q0vjo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y45ur")
+
+[node name="BuildingPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Jobs" type="Node" parent="."]

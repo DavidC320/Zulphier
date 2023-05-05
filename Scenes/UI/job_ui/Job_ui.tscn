@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://80oghdrtkxwg"]
+
+[ext_resource type="Script" path="res://Scenes/UI/job_ui/Job_ui.gd" id="1_nir37"]
+
+[node name="Job_ui" type="MarginContainer"]
+script = ExtResource("1_nir37")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.0705882, 0.341176, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Job title" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Job: #####"
+text_overrun_behavior = 1
+
+[node name="Discription label" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "sdalkfjklfsdajklsdfkajkfsdakl
+sdfakksdflakjflasd
+klsdfajklsdf"
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="workers" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Workers: 0 / ?"
+
+[node name="job time" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Job time: ?"
+
+[node name="controller box" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="less" type="Button" parent="VBoxContainer/VBoxContainer/controller box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "<"
+
+[node name="more" type="Button" parent="VBoxContainer/VBoxContainer/controller box"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="repeat" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Repeat Job"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="start job" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Start Job"
+
+[node name="stop job" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Stop job"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/controller box/less" to="." method="_on_less_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/controller box/more" to="." method="_on_more_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/start job" to="." method="_on_start_job_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/stop job" to="." method="_on_stop_job_pressed"]
