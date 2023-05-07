@@ -1,9 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://su82ewsj8tec"]
+[gd_scene load_steps=8 format=3 uid="uid://bsb17jdls0o7j"]
 
 [ext_resource type="Script" path="res://Scenes/GameScreen/GameScreen.gd" id="1_pcrt0"]
-[ext_resource type="PackedScene" path="res://Scenes/MapMaker/Map.tscn" id="2_ddi4k"]
+[ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="2_ddi4k"]
+[ext_resource type="Script" path="res://Scenes/GameScreen/CameraControl/Camerea controler.gd" id="3_kdrjo"]
+[ext_resource type="PackedScene" uid="uid://be4rro4cdoti8" path="res://Scenes/UI/ResourceUI/ResourceUi.tscn" id="4_hoguo"]
+[ext_resource type="PackedScene" uid="uid://dtu8gaihahcmi" path="res://Scenes/UI/GenerateMapButton/GenerateNewMap.tscn" id="5_5vqim"]
+[ext_resource type="PackedScene" uid="uid://ceb7xaelbuink" path="res://Scenes/UI/TileDataUi/tile_data_ui.tscn" id="6_scgt7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_biwf7"]
 
 [node name="GameScreen" type="Node3D"]
 script = ExtResource("1_pcrt0")
 
 [node name="Map" parent="." instance=ExtResource("2_ddi4k")]
+
+[node name="Scene" type="Node" parent="."]
+
+[node name="StaticBody3D" type="CharacterBody3D" parent="Scene"]
+script = ExtResource("3_kdrjo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene/StaticBody3D"]
+shape = SubResource("BoxShape3D_biwf7")
+disabled = true
+
+[node name="cameraPivot" type="Node3D" parent="Scene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.952231, -0.30538, 0, 0.30538, 0.952231, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Scene/StaticBody3D/cameraPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.37566, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 0.571172, 0.82083, 0, -0.82083, 0.571172, 0, 9.05078, 6.71869)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoneyUi" parent="Control" instance=ExtResource("4_hoguo")]
+
+[node name="GenerateNewMap" parent="Control" instance=ExtResource("5_5vqim")]
+
+[node name="TileDataUI" parent="Control" instance=ExtResource("6_scgt7")]

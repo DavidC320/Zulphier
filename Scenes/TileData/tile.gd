@@ -1,6 +1,6 @@
-extends Area3D
+extends StaticBody3D
 
-@onready var tile_builder = load("res://Templates/Tiles/TileCreator.gd").new()
+var tile_builder = load("res://Scenes/TileData/TileCreator.gd").new()
 
 var x:int
 var y:int
@@ -9,8 +9,6 @@ var y:int
 var state = "idle"
 var perlin_value = 0
 var tile_name = ""
-var tile_category = ""
-var altidude_offset = 0
 var tile_material = null
 var tile_buildings = []  # what can be built on this tile
 var tile_tiles = []  # what this tile can be changed to
@@ -28,22 +26,24 @@ var building_tiles = []  # what this tile can be changed to
 
 
 func get_available_items():
-	var building_pos = $"BuildingPos"
+	var building_pos = $"TileMesh/BuildingPos"
 	if building_pos.get_child_count() > 0:
-		return [building_buildings, building_tiles]
+		return [building_buildings, building_tiles, job_list]
 	else:
-		return [tile_buildings, tile_tiles]
+		return [tile_buildings, tile_tiles, []]
 
 
 func add_job(job_node):
-	$jobs.add_child(job_node)
-	job_list.append(job_node)
+	if not display_tile:
+		$Jobs.add_child(job_node)
+		job_list.append(job_node)
 
 func clear_jobs():
-	job_list.clear()
-	for job in $Jobs.get_children():
-		GameData.change_resource_number("population", job.number_of_workers)
-		$Jobs.remove_child(job)
+	if not display_tile:
+		job_list.clear()
+		for job in $Jobs.get_children():
+			GameData.change_resource_number("population", job.number_of_workers)
+			$Jobs.remove_child(job)
 
 
 ###############################################################################
@@ -51,40 +51,25 @@ func clear_jobs():
 ###############################################################################
 
 
-func change_tile(tile_category, c_tile_name, print_children = false):
+
+func change_tile(tile_c_name, print_children = false):
 	# Setting tile data
-	tile_name = c_tile_name
-	tile_category = tile_category
+	tile_name = tile_c_name
 	
-	tile_builder.change_tile(self, tile_category, c_tile_name)
+	tile_builder.change_tile(self, tile_c_name)
 	update_tile()
 	
 	if print_children:
-		print(self.get_node("Tile_mesh/building pos").get_child_count())
+		print(self.get_node("TileMesh/BuildingPos").get_child_count())
 		
-func change_building(building_name):
-	building = building_name
-	tile_builder.create_building(self, building_name)
+
+func change_building(building_data_name):
+	building = building_data_name
+	tile_builder.create_building(self, building_data_name)
 	change_building_layer()
 
 func update_tile():
 	$TileMesh.material_override = load(tile_material)
-
-# Warning This needs to be moved somewhere else!!!!!!!
-func tile_type_interpreter():
-	# code from RedBlobGamees
-	# perlin noise can generate between -1 to +1
-	# Water
-	var pv = perlin_value
-	
-	var current_tile_name = null
-	for data in tile_builder.tile_dict.get("generated tiles"):
-		if pv < data.get("perlin value"):
-			current_tile_name = data.get("name")
-			break
-	
-	tile_builder.change_tile(self, "generated tiles", current_tile_name)
-	update_tile()
 
 ###############################################################################
 ############################## Changing the tile ##############################
@@ -98,7 +83,6 @@ func tile_type_interpreter():
 func duplicate_tile_output():
 	var data = {
 		"name" : tile_name,
-		"type" : tile_category, 
 		"material" : $TileMesh.material_override, 
 		"building name" : building
 		}
@@ -107,7 +91,6 @@ func duplicate_tile_output():
 
 func duplicate_tile_input(data):
 	tile_name = data.get("name")
-	tile_category = data.get("type")
 	$TileMesh.material_override = data.get("material")
 	tile_builder.create_building(self, data.get("building name"))
 	building = data.get("building name")
@@ -117,18 +100,8 @@ func duplicate_tile_input(data):
 # Duplicating tile data to ui  #
 ################################
 
-
-func move_tile():
-	if state == "rise":
-		position.y = (perlin_value * altidude_offset) + .3
-		scale = Vector3(1.5, 1.5, 1.5)
-	elif state== "idle":
-		position.y = (perlin_value * altidude_offset)
-		scale = Vector3(1, 1, 1)
-
-
 func change_building_layer():
-	var building_pos = $"BuildingPos"
+	var building_pos = $"TileMesh/BuildingPos"
 	if building_pos.get_children() and display_tile:
 			var building_model = building_pos.get_child(0).get_child(0)
 			building_model.layers = 2
@@ -138,18 +111,16 @@ func _ready():
 	if display_tile:
 		$TileMesh.layers = 2
 		change_building_layer()
-	if perlin_value:
-		tile_type_interpreter()
 	
 
 
 func _process(_delta):
-	move_tile()
+	pass
 
 
 func _on_mouse_entered():
-	state = "rise"
+	$"Animations/TileHover".play("TileHover")
 
 
 func _on_mouse_exited():
-	state = "idle"
+	$"Animations/TileHover".play_backwards("TileHover")

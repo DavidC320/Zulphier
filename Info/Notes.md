@@ -1,25 +1,30 @@
 # Notes
 
-# 5/5/2023
+## 5/6/2023
+
+Still fixing things and it's fucking awful, I just need to make the new change button update it's name on it's own, and add functionality to the show and buy functions. fter that I need to update teh title screen .
+
+## 5/5/2023
 
 Everything got broken...
 Im going to salvage as much as possible
 
-# list of broken things
+## list of broken things
+
 Readme.txt
 game screen all script and scene
 All of TileData is broken
 All of Change Button is broken
 All of the Category list is broken
 
-# 5/4/2023
+## 5/4/2023
 
 I need to make the chagne button more legible
 Add something that happens when the dungeon is completed
 Add an end
 I need to allow the player to view what can be built on tiles
 
-## 4/30/2023 
+## 4/30/2023
 
 friday 5 new kittens where added to the litter and mom cat doesn't want to 
 bother with them.

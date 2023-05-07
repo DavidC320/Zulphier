@@ -1,25 +1,33 @@
 extends Node3D
 # Perlin stuff learned from Dave the Dev
 @export var tile_type_noise = FastNoiseLite.new()
+var tileData = load("res://Scenes/TileData/Tile_data.gd").new()
 
 # Basis stuff
-var tile_base = preload("res://Templates/Tiles/tile.tscn")
+var tile_base = preload("res://Scenes/TileData/TileBase.tscn")
 var grid = []
 
 func starting_cord(number, tile_size, padding) -> int:
 	return (number/2 - tile_size/2 - padding) * -1
 
 func create_tile(x, z, true_x, true_z, noise_scale, altitude_offset):
+	var tile = tile_base.instantiate()
+	
 	var amplified_x = x * noise_scale
 	var amplified_z = z * noise_scale
-	var tile = tile_base.instantiate()
 	var altitude = tile_type_noise.get_noise_2d(amplified_x, amplified_z) 
-	tile.perlin_value = altitude
-	tile.altidude_offset = altitude_offset
+	var current_tile_name = null
+	for data in tileData.perlin_gnerate_tile_list:
+		if altitude < data[0]:
+			current_tile_name = data[1]
+			break
+	
+	tile.change_tile(current_tile_name)
+	
 	tile.x = true_x
 	tile.y = true_z
 	add_child(tile)
-	tile.global_position = Vector3(x, altitude, z)
+	tile.global_position = Vector3(x, altitude * altitude_offset, z)
 	return tile
 
 func create_map(map_size, tile_size, padding, noise_scale, altitude_offset=0):
@@ -49,7 +57,7 @@ func create_map(map_size, tile_size, padding, noise_scale, altitude_offset=0):
 		t_z += 1
 	
 	var dungeon_tile = grid[round(rows/2)][round(columns/2)]
-	dungeon_tile.change_tile("other tiles", "Dungeon Floor", true)
+	dungeon_tile.change_tile("dungeon floor")
 	return camera_clamp
 
 

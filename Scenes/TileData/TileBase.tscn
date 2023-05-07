@@ -1,21 +1,93 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn7at7u6n475p"]
+[gd_scene load_steps=7 format=3 uid="uid://cn7at7u6n475p"]
 
 [ext_resource type="Script" path="res://Scenes/TileData/tile.gd" id="1_vd34r"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_q0vjo"]
+[sub_resource type="BoxMesh" id="BoxMesh_j3qg2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y45ur"]
 
-[node name="TileBase" type="StaticBody3D"]
+[sub_resource type="Animation" id="Animation_p215i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TileMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TileMesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l23ee"]
+resource_name = "TileHover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TileMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TileMesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtswj"]
+_data = {
+"RESET": SubResource("Animation_p215i"),
+"TileHover": SubResource("Animation_l23ee")
+}
+
+[node name="TileBase" type="StaticBody3D" groups=["Tile"]]
 script = ExtResource("1_vd34r")
 
 [node name="TileMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_q0vjo")
+mesh = SubResource("BoxMesh_j3qg2")
+
+[node name="BuildingPos" type="Node3D" parent="TileMesh"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+
+[node name="Jobs" type="Node" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_y45ur")
 
-[node name="BuildingPos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="Animations" type="Node" parent="."]
 
-[node name="Jobs" type="Node" parent="."]
+[node name="TileHover" type="AnimationPlayer" parent="Animations"]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_dtswj")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

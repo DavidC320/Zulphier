@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceb7xaelbuink"]
+
+[ext_resource type="PackedScene" uid="uid://bwdww056mw4p3" path="res://Scenes/UI/TileDataUi/TileViewer/tile_view_port.tscn" id="1_dqwld"]
+[ext_resource type="Script" path="res://Scenes/UI/TileDataUi/tile_data_ui.gd" id="1_dr7n4"]
+[ext_resource type="PackedScene" uid="uid://cj8tqg3dud440" path="res://Scenes/UI/TileDataUi/CategoryList/CategoryList.tscn" id="3_j3ogv"]
+
+[node name="TileDataUI" type="CanvasLayer"]
+script = ExtResource("1_dr7n4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = "S
+h
+o
+w
+ 
+D
+a
+t
+a
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TileVisuliser" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser"]
+layout_mode = 2
+
+[node name="TileNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+layout_mode = 2
+text = "Tile Name"
+horizontal_alignment = 1
+
+[node name="BuildingNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+layout_mode = 2
+text = "Building Name"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer" instance=ExtResource("1_dqwld")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "No Connections"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.121569, 0.121569, 0.121569, 0.345098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 21
+
+[node name="Tiles" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+layout_mode = 2
+category_name = "Tiles"
+category_mode = "Tile"
+color = Color(0.529412, 0.682353, 1, 1)
+
+[node name="Buildings" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+layout_mode = 2
+category_name = "Buildings"
+category_mode = "building"
+color = Color(0.658824, 0.352941, 0, 1)
+
+[node name="Jobs" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+layout_mode = 2
+category_name = "Jobs"
+category_mode = "job"
+color = Color(0.239216, 0.513726, 0, 1)

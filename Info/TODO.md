@@ -1,20 +1,34 @@
 # To do List
 
+## 5/7/2023
+
+1. Have the name text label in the change button ti display the the item name.
+2. connect the change button to the tile_data_ui to allow both the selected and display to change
+
+## 5/5/2023
+
+GAME GOT CORRUPTED
+
+1. Fix the Game Screen // Working on
+2. Fix the Tile Data Ui
+   1. Recreate the change button
+   2. Recreate the category list
+3. Fix the Game Data script // Working on
+
 ## 5/4/2023
 
 1. Figure out why the game won't take away an amount from the rescources.
-	if it does then what is in place to check if the rescorece is available
-	
+if it does then what is in place to check if the rescorece is available
+
 2. Add hints into the game.
-	a. Hide all ui elements in the game until they are needed
-		b. the tile data ui is hidden until the player clicks a tile
-		c. the resource ui is hidden until the player changes a resource
-	b. text will appear at first to guide the player
-		a. the game will ask the player to find a spot for their center
-		b. the game will ask the player to build a lumber mill
-		c. the game will ask the player to build a lumber yard
-		d. the game will ask the player to build a road
-		
+	1. Hide all ui elements in the game until they are needed
+		1. the tile data ui is hidden until the player clicks a tile
+		2. the resource ui is hidden until the player changes a resource
+	2. text will appear at first to guide the player
+		1. the game will ask the player to find a spot for their center
+		2. the game will ask the player to build a lumber mill
+		3. the game will ask the player to build a lumber yard
+		4. the game will ask the player to build a road
 3. create the map parameters menu into the game.
 4. create a pause menu into the game.
 
@@ -37,7 +51,6 @@
 6. available requirments to the game that will only show the item if certain // Done
 	conditions are met
 
-
 ## 5/1/2023
 1. Have the building overide available tiles and buildings
 2. create a title screen
@@ -51,6 +64,7 @@
 
 
 ## 4/29/2023
+
 1. give buildings a creation affect that allow the house to add population and
 population cap ---
 2. Have the tile ui's building and tile change ui overrided by the current 
@@ -69,6 +83,7 @@ converting buildings and changing the tile into an illigl tile
 ## 4/26/2023
 
 All of 4/45/2023
+
 1. seperate the tile viewer from the scroll box
 2. Create checks for tiles such so that the player can't just create anything any where
 3. remove the function to change buildings if thier is already a building present
