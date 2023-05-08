@@ -2,8 +2,8 @@ extends StaticBody3D
 
 var tile_builder = load("res://Scenes/TileData/TileCreator.gd").new()
 
-var x:int
-var y:int
+var column:int
+var row:int
 
 # tile data
 var state = "idle"
@@ -42,7 +42,7 @@ func clear_jobs():
 	if not display_tile:
 		job_list.clear()
 		for job in $Jobs.get_children():
-			GameData.change_resource_number("population", job.number_of_workers)
+			GameData.change_resource("population", job.number_of_workers)
 			$Jobs.remove_child(job)
 
 

@@ -69,5 +69,4 @@ libraries = {
 }
 
 [node name="TileBase" parent="SubViewport/Node3D" instance=ExtResource("2_6esgj")]
-transform = Transform3D(9.65599e-07, 0, -1, 0, 1, 0, 1, 0, 9.65599e-07, 0, 0, 0)
 display_tile = true

@@ -31,8 +31,8 @@ func update_job(workers:int, repeat:bool):
 
 func change_workers(number):
 	"changes the number of workers in this job then adds or subtracts from global population"
-	#ar available_workers = GameData.population sd
-	var check_if_a_population = true #available_workers >= number
+	var available_workers = GameData.population
+	var check_if_a_population = available_workers >= number
 	
 	if check_if_a_population:
 		# changing the number of workers in this job
@@ -48,7 +48,7 @@ func change_workers(number):
 			number_of_workers = new_total_workers
 		
 		print(global_worker_change)
-		#GameData.change_resource_number("population", global_worker_change)
+		GameData.change_resource("population", global_worker_change)
 
 
 func stop_job():

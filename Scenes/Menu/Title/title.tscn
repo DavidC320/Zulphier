@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4jd27pa71kvh"]
+[gd_scene load_steps=17 format=3 uid="uid://c4jd27pa71kvh"]
 
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="1_hep7q"]
 [ext_resource type="Script" path="res://Scenes/Menu/Title/title.gd" id="1_l732e"]
 [ext_resource type="FontFile" uid="uid://c6gatjvmy7nhv" path="res://resources/fonts/ancient/Ancient Medium.ttf" id="2_vga65"]
 [ext_resource type="AudioStream" uid="uid://4wfnrh64sdyk" path="res://resources/Music/Sierra On-line - Glass Shutters - 06 Glass shutters.mp3" id="3_au3ef"]
+[ext_resource type="PackedScene" uid="uid://c1judp25rju7m" path="res://Scenes/UI/Menus/Title_menu.tscn" id="5_xj1lb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o85eu"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -519,3 +520,6 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+
+[node name="Title_menu" parent="Menu" instance=ExtResource("5_xj1lb")]
+layout_mode = 1

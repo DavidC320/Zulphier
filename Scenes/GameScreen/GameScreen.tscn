@@ -1,13 +1,65 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsb17jdls0o7j"]
+[gd_scene load_steps=15 format=3 uid="uid://bsb17jdls0o7j"]
 
 [ext_resource type="Script" path="res://Scenes/GameScreen/GameScreen.gd" id="1_pcrt0"]
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="2_ddi4k"]
 [ext_resource type="Script" path="res://Scenes/GameScreen/CameraControl/Camerea controler.gd" id="3_kdrjo"]
+[ext_resource type="AudioStream" uid="uid://gwsjupglxotm" path="res://resources/Music/Twin Musicom - At the Foot of the Sphinx.mp3" id="4_2i75b"]
 [ext_resource type="PackedScene" uid="uid://be4rro4cdoti8" path="res://Scenes/UI/ResourceUI/ResourceUi.tscn" id="4_hoguo"]
 [ext_resource type="PackedScene" uid="uid://dtu8gaihahcmi" path="res://Scenes/UI/GenerateMapButton/GenerateNewMap.tscn" id="5_5vqim"]
 [ext_resource type="PackedScene" uid="uid://ceb7xaelbuink" path="res://Scenes/UI/TileDataUi/tile_data_ui.tscn" id="6_scgt7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_biwf7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qgtx"]
+sky_top_color = Color(0.0941176, 0.776471, 0.854902, 1)
+sky_horizon_color = Color(0.603922, 0.615686, 0.631373, 1)
+ground_bottom_color = Color(0.152941, 0.0627451, 1, 1)
+ground_horizon_color = Color(0.188235, 0.196078, 0.203922, 1)
+ground_curve = 0.0696444
+
+[sub_resource type="Sky" id="Sky_aohwy"]
+sky_material = SubResource("ProceduralSkyMaterial_6qgtx")
+
+[sub_resource type="Environment" id="Environment_lwib3"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_aohwy")
+
+[sub_resource type="Animation" id="Animation_xtljv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:background_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qnk53"]
+resource_name = "Start_Game"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:background_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_woccp"]
+_data = {
+"RESET": SubResource("Animation_xtljv"),
+"Start_Game": SubResource("Animation_qnk53")
+}
 
 [node name="GameScreen" type="Node3D"]
 script = ExtResource("1_pcrt0")
@@ -32,6 +84,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.3
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
 transform = Transform3D(1, 0, 0, 0, 0.571172, 0.82083, 0, -0.82083, 0.571172, 0, 9.05078, 6.71869)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
+environment = SubResource("Environment_lwib3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Scene"]
+stream = ExtResource("4_2i75b")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -43,3 +101,10 @@ offset_bottom = 40.0
 [node name="GenerateNewMap" parent="Control" instance=ExtResource("5_5vqim")]
 
 [node name="TileDataUI" parent="Control" instance=ExtResource("6_scgt7")]
+
+[node name="Animation" type="Node" parent="."]
+
+[node name="Start_game" type="AnimationPlayer" parent="Animation"]
+libraries = {
+"": SubResource("AnimationLibrary_woccp")
+}

@@ -2,9 +2,9 @@
 
 ---
 
+## 5/7/2023
 
-## 5/4/2023
-
+	Everything was fixed.
 
 ## 5/3/2023
 
@@ -12,7 +12,6 @@ Title screen has been added to the game
 map data now goes to game data
 The Town center has been added to the game
 Buildings and tiles can only be changed if next to a connection I.E Roads and Town center
-
 
 ## 5/2-1/2023
 

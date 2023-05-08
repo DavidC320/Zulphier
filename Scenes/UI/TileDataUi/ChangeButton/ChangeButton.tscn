@@ -8,10 +8,11 @@ script = ExtResource("1_qb2io")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0.215686, 0.215686, 0.215686, 0.513726)
+color = Color(0.227451, 0.227451, 0.227451, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="TopSection" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -22,48 +23,62 @@ theme_override_font_sizes/font_size = 19
 text = "Item Name"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/TopSection"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopSection"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/TopSection/MarginContainer"]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/TopSection/MarginContainer"]
+layout_mode = 2
+text = "Not Connected"
+horizontal_alignment = 1
+
+[node name="showButton" type="Button" parent="VBoxContainer/TopSection"]
 layout_mode = 2
 text = "Show"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0.329412, 0.329412, 0.329412, 0.521569)
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Description"
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 11
 text = "This is a test description for this item that doesn't exist."
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 140)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CategoryList" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_4js6r")]
+[node name="CategoryList" parent="VBoxContainer/VBoxContainer2" instance=ExtResource("1_4js6r")]
 layout_mode = 2
 category_name = "Rewards"
 category_mode = "reward"
-color = Color(0.113725, 0.352941, 1, 1)
+color = Color(0, 0, 0, 0.105882)
 
-[node name="CategoryList2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_4js6r")]
+[node name="CategoryList2" parent="VBoxContainer/VBoxContainer2" instance=ExtResource("1_4js6r")]
 layout_mode = 2
 category_name = "Cost"
 category_mode = "cost"
-color = Color(0.54902, 0.454902, 0, 1)
+color = Color(0, 0, 0, 0.105882)
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="buyButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Buy Item"
+
+[connection signal="pressed" from="VBoxContainer/TopSection/showButton" to="." method="_on_show_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/buyButton" to="." method="_on_buy_button_pressed"]

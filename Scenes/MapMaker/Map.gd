@@ -24,8 +24,8 @@ func create_tile(x, z, true_x, true_z, noise_scale, altitude_offset):
 	
 	tile.change_tile(current_tile_name)
 	
-	tile.x = true_x
-	tile.y = true_z
+	tile.column = true_x
+	tile.row = true_z
 	add_child(tile)
 	tile.global_position = Vector3(x, altitude * altitude_offset, z)
 	return tile
@@ -46,7 +46,7 @@ func create_map(map_size, tile_size, padding, noise_scale, altitude_offset=0):
 	for col_num in columns:
 		var tile_row = []
 		for row_num in rows:
-			var created_tile = create_tile(x, z, t_z, t_x, noise_scale, altitude_offset)
+			var created_tile = create_tile(x, z, t_x, t_z, noise_scale, altitude_offset)
 			tile_row.append(created_tile)
 			x += tile_size + padding
 			t_x += 1
@@ -58,6 +58,7 @@ func create_map(map_size, tile_size, padding, noise_scale, altitude_offset=0):
 	
 	var dungeon_tile = grid[round(rows/2)][round(columns/2)]
 	dungeon_tile.change_tile("dungeon floor")
+	GameData.map_data = grid
 	return camera_clamp
 
 

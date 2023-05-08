@@ -8,15 +8,15 @@ var job_scene = preload("res://Scenes/TileData/Jobs/job_data.tscn")
 # BUILDING FUNCTIONS #
 ######################
 
-func contruction_bonus(tile, value_change = 1):
-	var bonuses = building_dict.get(tile.building).get("building effects")
+func contruction_bonus(tile, value_change= 1):
+	var bonuses = building_dict.get(tile.building.to_lower()).get("building effects")
 	
 	if not tile.display_tile:
 		
 		for bonus in bonuses:
 			var resource = bonus[0]
 			var number = bonus[1] * value_change
-			GameData.change_resource_number(resource, number)
+			GameData.change_resource(resource, number)
 
 func load_building_model(building_name):
 	"used to get the glb file for a building"
@@ -44,13 +44,14 @@ func create_building(tile, building_name):
 	"""This function is different from add building due to this being used to 
 	directly change the current building directly"""
 	if building_name:
+		var true_name = building_name.to_lower()
 		
 		# adding the building model into the building spatial
 		# if the tile has a building
 		delete_building_model(tile)
-		var building_data = building_dict.get(building_name)
+		var building_data = building_dict.get(true_name)
 		
-		tile.building = building_name
+		tile.building = building_data.get("name")
 		tile.building_name = building_data.get("name")
 		
 		# get available items
@@ -63,7 +64,7 @@ func create_building(tile, building_name):
 			availabe_tiles = []
 		tile.building_tiles = availabe_tiles
 		
-		var loaded_building = load_building_model(building_name)
+		var loaded_building = load_building_model(true_name)
 		var building_node = tile.get_node("TileMesh/BuildingPos")
 		building_node.add_child(loaded_building)
 		

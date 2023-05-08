@@ -10,8 +10,6 @@ func set_data(data, ignore_resoruce_check= false):
 	resource = data[0]
 	number = data[1]
 	ignore_check = ignore_resoruce_check
-	
-	print(resource, number)
 	label.text = "%s | %s" % [number, resource]
 
 func update_cost_color():

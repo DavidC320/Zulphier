@@ -1,10 +1,14 @@
 extends Node3D
-var map_size = 11
+var map_size = 5
 var tile_size = 1
 var padding = 0.0
 var noise_scale = 4
 
 const RAY_LENGTH = 1000.0
+
+
+# tutorial stuff
+var uncreated_center = true
 
 
 func _mouse_click(event):
@@ -17,9 +21,19 @@ func _mouse_click(event):
 	var queary = PhysicsRayQueryParameters3D.create(from, to)
 	var intersection = space_state.intersect_ray(queary)
 	if intersection.size() > 0:
-		print(intersection.get("collider"))
+		GameData.selected_tile = intersection.get("collider")
 		tileDataUI.update_ui(intersection.get("collider"))
 
+
+func tutorial():
+	if uncreated_center:
+		print("check if center")
+		print(GameData.center)
+		if GameData.center > 0:
+			$Animation/Start_game.play("Start_Game")
+			print("center found")
+			uncreated_center = false
+			$Scene/AudioStreamPlayer.play()
 
 
 func hide_town_center_text():
@@ -29,8 +43,7 @@ func hide_town_center_text():
 func _ready():
 	var clamps = $Map.create_map(map_size, tile_size, padding, noise_scale, 2)
 	$"Scene/StaticBody3D"._change_pos_clamp(clamps[0], clamps[1])
-	GameData.map_data = $Map.grid
-	#GameData.resource_changed.connect(func(): show_resources())
+	GameData.resource_changed.connect(func(): tutorial())
 	#GameData.center_created.connect(func(): hide_town_center_text())
 	#$"scene stuff/ui/CanvasLayer/MarginContainer/Typing_text".play_animation()
 	#$"scene stuff/ui/MoneyUi".visible = false

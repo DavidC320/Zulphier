@@ -23,4 +23,4 @@ func _on_exit_pressed():
 
 
 func _on_play_pressed():
-	Fade.change_scene("res://Templates/scenes/main game scene/game_screen.tscn")
+	Fade.change_scene("res://Scenes/GameScreen/GameScreen.tscn")

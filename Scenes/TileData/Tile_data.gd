@@ -12,7 +12,7 @@ var list_of_raw_tile_data = [
 		"material" : "res://resources/materials/sand.tres",
 		"create building" : false,
 		"show" : [],
-		"available buildings" : ["larder", "town center"],
+		"available buildings" : ["town center", "larder"],
 		"available tiles" : ["road", "foundation"]
 	},
 	{
@@ -20,7 +20,7 @@ var list_of_raw_tile_data = [
 		"material" : "res://resources/materials/grass.tres",
 		"create building" : false,
 		"show" : [],
-		"available buildings" : ["house", "warehouse", "town center"],
+		"available buildings" : ["town center", "house", "warehouse"],
 		"available tiles" : ["road", "foundation"]
 	},
 	{
@@ -28,7 +28,7 @@ var list_of_raw_tile_data = [
 		"material" : "res://resources/materials/forest.tres",
 		"create building" : false,
 		"show" : [],
-		"available buildings" : ["lumber mill", "lumber yard", "town center"],
+		"available buildings" : ["town center", "lumber mill", "lumber yard"],
 		"available tiles" : ["road", "foundation"]
 	},
 	{
@@ -209,7 +209,7 @@ var building_dict = {
 		"show" : [],
 		"model" : "res://resources/Models/Dark Tower.glb"
 	},
-	"dark fortress" : {
+	"dark fortress" : { # dark fortress
 		"name" : "Dark Fortress",
 		"settings" : "dungeon settings",
 		"desc" : "A prison for those taken as hostages. The screams tear through you.",
@@ -277,7 +277,7 @@ var building_dict = {
 		"model" : "res://resources/Models/House.glb"
 	},
 	"warehouse" : {
-		"name" : "Warhouse",
+		"name" : "Warehouse",
 		"settings" : "warehouse settings",
 		"desc" : "A building that store a lot of different resources",
 		"building effects" : [["wood cap", 2], ["money cap", 2], ["food cap", 2], ["mineral cap", 2]],

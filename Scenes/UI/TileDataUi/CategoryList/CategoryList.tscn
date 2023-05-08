@@ -5,10 +5,6 @@
 [node name="CategoryList" type="MarginContainer"]
 script = ExtResource("1_8ooef")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 2
-color = Color(0.439216, 0.439216, 0.439216, 1)
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
@@ -17,7 +13,7 @@ layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 0.509804)
+color = Color(0.337255, 0.337255, 0.337255, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2

@@ -2,8 +2,12 @@
 
 ## 5/7/2023
 
-1. Have the name text label in the change button ti display the the item name.
-2. connect the change button to the tile_data_ui to allow both the selected and display to change
+1. Have the name text label in the change button ti display the the item name. // done
+2. connect the change button to the tile_data_ui to allow both the selected and display to change // done
+3. add hints to the game
+4. create map parameters menu
+5. make a pause menu
+6. create models
 
 ## 5/5/2023
 

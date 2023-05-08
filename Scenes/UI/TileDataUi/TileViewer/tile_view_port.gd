@@ -3,8 +3,8 @@ extends SubViewportContainer
 func change_tile(selected_tile_data):
 	$SubViewport/Node3D/TileBase.duplicate_tile_input(selected_tile_data)
 	
-func change_show_tile(tile_category, tile_name):
-	$SubViewport/Node3D/TileBase.change_tile(tile_category, tile_name)
+func change_show_tile(tile_name):
+	$SubViewport/Node3D/TileBase.change_tile(tile_name)
 	
 func change_show_building(building_name):
 	$SubViewport/Node3D/TileBase.change_building(building_name)

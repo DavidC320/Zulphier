@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Zulphier Remake"
-run/main_scene="res://Scenes/GameScreen/GameScreen.tscn"
+run/main_scene="res://Scenes/Menu/Title/title.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameData="*res://Scenes/Scripts/GameData.gd"
+Fade="*res://Scenes/Transistions/fade.tscn"
 
 [input]
 

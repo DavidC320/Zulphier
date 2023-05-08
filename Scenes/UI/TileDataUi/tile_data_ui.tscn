@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceb7xaelbuink"]
+[gd_scene load_steps=6 format=3 uid="uid://ceb7xaelbuink"]
 
 [ext_resource type="PackedScene" uid="uid://bwdww056mw4p3" path="res://Scenes/UI/TileDataUi/TileViewer/tile_view_port.tscn" id="1_dqwld"]
 [ext_resource type="Script" path="res://Scenes/UI/TileDataUi/tile_data_ui.gd" id="1_dr7n4"]
 [ext_resource type="PackedScene" uid="uid://cj8tqg3dud440" path="res://Scenes/UI/TileDataUi/CategoryList/CategoryList.tscn" id="3_j3ogv"]
+[ext_resource type="AudioStream" uid="uid://kc3oqddtglau" path="res://resources/SFX/364690__alegemaate__human-impact-on-ground.wav" id="4_6c5rr"]
+[ext_resource type="AudioStream" uid="uid://dt5fk8tt4vwff" path="res://resources/SFX/371353__mrthenoronha__iron-hits.wav" id="5_2s65y"]
 
 [node name="TileDataUI" type="CanvasLayer"]
 script = ExtResource("1_dr7n4")
@@ -15,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
+mouse_filter = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -48,9 +51,12 @@ color = Color(0, 0, 0, 0.501961)
 layout_mode = 2
 
 [node name="TileNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+custom_minimum_size = Vector2(145, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Tile Name"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
 [node name="BuildingNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
 layout_mode = 2
@@ -59,18 +65,6 @@ horizontal_alignment = 1
 
 [node name="SubViewportContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer" instance=ExtResource("1_dqwld")]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/MarginContainer"]
-layout_mode = 2
-color = Color(1, 0, 0, 1)
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/MarginContainer"]
-layout_mode = 2
-text = "No Connections"
-horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -94,20 +88,33 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 21
 
-[node name="Tiles" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
-layout_mode = 2
-category_name = "Tiles"
-category_mode = "Tile"
-color = Color(0.529412, 0.682353, 1, 1)
-
 [node name="Buildings" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
 layout_mode = 2
 category_name = "Buildings"
 category_mode = "building"
-color = Color(0.658824, 0.352941, 0, 1)
+color = Color(0.298039, 0.145098, 0, 1)
+seperation_num = 30
+
+[node name="Tiles" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+layout_mode = 2
+category_name = "Tiles"
+category_mode = "tile"
+color = Color(0.00392157, 0.113725, 0.560784, 1)
+seperation_num = 30
 
 [node name="Jobs" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
 layout_mode = 2
 category_name = "Jobs"
 category_mode = "job"
-color = Color(0.239216, 0.513726, 0, 1)
+color = Color(0.0705882, 0.188235, 0, 1)
+disable_if_no_connection = true
+seperation_num = 30
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="build_tile" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_6c5rr")
+
+[node name="build_building" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_2s65y")
+volume_db = -0.5
