@@ -1,5 +1,7 @@
 extends Control
 
+signal play_game
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,4 +25,4 @@ func _on_exit_pressed():
 
 
 func _on_play_pressed():
-	Fade.change_scene("res://Scenes/GameScreen/GameScreen.tscn")
+	emit_signal("play_game")

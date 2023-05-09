@@ -56,7 +56,7 @@ func create_map(map_size, tile_size, padding, noise_scale, altitude_offset=0):
 		z += tile_size + padding
 		t_z += 1
 	
-	var dungeon_tile = grid[round(rows/2)][round(columns/2)]
+	var dungeon_tile = grid[floor(rows/2)][floor(columns/2)]
 	dungeon_tile.change_tile("dungeon floor")
 	GameData.map_data = grid
 	return camera_clamp

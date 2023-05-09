@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4jd27pa71kvh"]
+[gd_scene load_steps=19 format=3 uid="uid://c4jd27pa71kvh"]
 
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="1_hep7q"]
 [ext_resource type="Script" path="res://Scenes/Menu/Title/title.gd" id="1_l732e"]
 [ext_resource type="FontFile" uid="uid://c6gatjvmy7nhv" path="res://resources/fonts/ancient/Ancient Medium.ttf" id="2_vga65"]
 [ext_resource type="AudioStream" uid="uid://4wfnrh64sdyk" path="res://resources/Music/Sierra On-line - Glass Shutters - 06 Glass shutters.mp3" id="3_au3ef"]
+[ext_resource type="PackedScene" uid="uid://cs6yg8hbg6oxy" path="res://Scenes/UI/TypingText/TypingText.tscn" id="5_cigww"]
 [ext_resource type="PackedScene" uid="uid://c1judp25rju7m" path="res://Scenes/UI/Menus/Title_menu.tscn" id="5_xj1lb"]
+[ext_resource type="PackedScene" uid="uid://d01nefngteucm" path="res://Scenes/UI/Menus/MapMenu/generation_menu.tscn" id="6_4cpq0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o85eu"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -216,11 +218,11 @@ tracks/10/keys = {
 tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../Menu/HBoxContainer/VBoxContainer/text_1")
+tracks/11/path = NodePath("../Menu/HBoxContainer/VBoxContainer/TypingText")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 6.9),
+"times": PackedFloat32Array(0, 16.1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -233,11 +235,11 @@ tracks/11/keys = {
 tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("../Menu/HBoxContainer/VBoxContainer2/text_2")
+tracks/12/path = NodePath("../Menu/HBoxContainer/VBoxContainer2/TypingText2")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(6.9, 15.4),
+"times": PackedFloat32Array(16, 30),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -245,54 +247,6 @@ tracks/12/keys = {
 }, {
 "args": [],
 "method": &"reverse_animation"
-}]
-}
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("../Menu/HBoxContainer/VBoxContainer/text_3")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(15.3, 22.8),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play_animation"
-}, {
-"args": [],
-"method": &"reverse_animation"
-}]
-}
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("../Menu/HBoxContainer/VBoxContainer2/text_4")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(22.8, 29.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play_animation"
-}, {
-"args": [],
-"method": &"reverse_animation"
-}]
-}
-tracks/15/type = "method"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("../Menu/Title_menu/text")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(31.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_animation"
 }]
 }
 
@@ -516,10 +470,42 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
+[node name="TypingText" parent="Menu/HBoxContainer/VBoxContainer" instance=ExtResource("5_cigww")]
+layout_mode = 2
+label_text = "Eons ago, this world was in a reneccance of 
+peace and technolgy in Iae. Nations traded and 
+allies where gained or lost. A cycle 
+undesterbed for millina. 
+The sky one day fractured. A pulsating 
+mass of liquid malevolence floated down 
+from it's wretched womb. In an isntant it 
+started recking havoic upon the world 
+with it's curropting fire. The Apocholypse 
+had started."
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Menu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
+[node name="TypingText2" parent="Menu/HBoxContainer/VBoxContainer2" instance=ExtResource("5_cigww")]
+layout_mode = 2
+label_text = "For years the people of Iae lived under 
+the parasitic veins of the dark mass. 
+Nations falling, dispering or being twisted
+ into amalga. Soon the few who survived 
+would rise and build anew. The left 
+brougth their strongest champions to the 
+plane of Iae. the champions bound the 
+mass in chains made of spectrual might 
+and sunk the mass into the core of Iae. 
+The world healed for eons till now."
+
 [node name="Title_menu" parent="Menu" instance=ExtResource("5_xj1lb")]
 layout_mode = 1
+
+[node name="GenerationMenu" parent="Menu" instance=ExtResource("6_4cpq0")]
+visible = false
+layout_mode = 1
+
+[connection signal="play_game" from="Menu/Title_menu" to="." method="_on_title_menu_play_game"]

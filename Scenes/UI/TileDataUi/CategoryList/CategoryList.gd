@@ -84,7 +84,7 @@ func add_change_button_ui(data, ui_mode):
 		return
 
 	var button = change_button.instantiate()
-	button.set_up_change_button(data, show_check)
+	button.update_change_button(data, show_check, $VBoxContainer/MarginContainer/ColorRect.color)
 	button.buy_pressed.connect(func(): update_selected_item(data, ui_mode, "buy"))
 	button.show_pressed.connect(func(): update_selected_item(data, ui_mode, "show"))
 	$VBoxContainer/list.add_child(button)

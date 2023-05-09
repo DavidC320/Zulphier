@@ -30,5 +30,6 @@ text = "Show data"
 
 [node name="list" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 0
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/ShowButton" to="." method="_on_show_button_pressed"]

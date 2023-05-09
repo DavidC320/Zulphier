@@ -6,13 +6,15 @@ var done = false
 
 
 func play_animation():
-	self.text = label_text
+	$Label.text = label_text
 	$AnimationPlayer.speed_scale = speed_scale
 	$AnimationPlayer.play("DisplayText")
+
 
 func reverse_animation():
 	$AnimationPlayer.speed_scale = speed_scale
 	$AnimationPlayer.play_backwards("DisplayText")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

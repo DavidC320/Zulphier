@@ -6,9 +6,10 @@ var costs = []
 signal buy_pressed
 signal show_pressed
 
-func set_up_change_button(item_data, connected):
+func update_change_button(item_data, connected, color):
 	rewards = item_data.get("building effects")
 	costs = item_data.get("cost")
+	$ColorRect.color = color
 
 	$VBoxContainer/TopSection/Label.text = item_data.get("name")
 	$VBoxContainer/VBoxContainer/RichTextLabel.text = str(item_data.get("desc"))
@@ -40,7 +41,7 @@ func _process(delta):
 
 func _on_buy_button_pressed():
 	if GameData.check_list_of_cost(costs):
-		GameData.cost_interp(costs)
+		GameData.cost_interp(costs, -1)
 		emit_signal("buy_pressed")
 
 

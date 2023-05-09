@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnl5j06r7jyap"]
+
+[ext_resource type="Script" path="res://Scenes/UI/SpinWidget/spin_widget.gd" id="1_2pjn3"]
+
+[node name="SpinWidget" type="MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2pjn3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Text"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.47451)
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Num"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Less" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="More" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Less" to="." method="_on_less_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/More" to="." method="_on_more_pressed"]

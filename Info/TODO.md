@@ -1,5 +1,18 @@
 # To do List
 
+## 5/8/2023
+
+1. Add an end game
+   1. The dungeon will have 3 levels
+      1. level one is the base form that gives money on compeltion and give teh building xp
+      2. level two adds a new job that gets resources but is longer and the next level is longer.
+      3. level 3 is the longest and jobs will cost a lot of resources and the next level is way longer
+      4. finally the player will conquer the dungeon completing the map.
+2. Add a pause menu
+3. create the rest of the models
+4. add a quest giver
+   1. the quest giver will give a list of tasks to complete to help guide the player
+
 ## 5/7/2023
 
 1. Have the name text label in the change button ti display the the item name. // done

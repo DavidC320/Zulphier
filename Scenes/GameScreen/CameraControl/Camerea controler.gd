@@ -6,6 +6,14 @@ var z_max = 1
 
 @export var SPEED = 5.0
 
+var zoom_dir = 0
+@onready var camera = $cameraPivot/Camera3D
+
+@export var min_zoom = 5
+@export var max_zoom = 14
+@export var zoom_speed = 20
+@export var zoom_speed_damp = .5
+
 
 func _change_pos_clamp(x, z):
 	x_min = x
@@ -34,3 +42,23 @@ func _movement(_delta):
 
 func _physics_process(delta):
 	_movement(delta)
+	_zoom(delta)
+	
+func _zoom(delta):
+	# calculate new zoom
+	var new_zoom = clamp(camera.position.y + zoom_speed * delta * zoom_dir, 
+	min_zoom,
+	max_zoom)
+	#clamp bwteen min and max
+	camera.position.y = new_zoom
+	#stop zoom
+	zoom_dir = 0
+	pass
+
+func _unhandled_input(event):
+	if event.is_action_pressed("zoom_in"):
+		zoom_dir = -1
+		print("in")
+	elif event.is_action_pressed("zoom_out"):
+		zoom_dir = 1
+		print("out")

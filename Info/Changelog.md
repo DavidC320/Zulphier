@@ -2,6 +2,17 @@
 
 ---
 
+
+## 5/8/2023
+
+	Bug fixes
+	Fixed, the Tile Data UI would play sounds multiple times when the signal of the category list would be connected multiple times when updating the list.
+	Fixed, buying wouldn't take any of your resources
+
+	Features
+	New Map Parameter menu has been added
+	The Camera can now zoom in.
+
 ## 5/7/2023
 
 	Everything was fixed.

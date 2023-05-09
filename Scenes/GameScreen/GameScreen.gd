@@ -1,8 +1,5 @@
 extends Node3D
-var map_size = 5
 var tile_size = 1
-var padding = 0.0
-var noise_scale = 4
 
 const RAY_LENGTH = 1000.0
 
@@ -27,11 +24,8 @@ func _mouse_click(event):
 
 func tutorial():
 	if uncreated_center:
-		print("check if center")
-		print(GameData.center)
 		if GameData.center > 0:
 			$Animation/Start_game.play("Start_Game")
-			print("center found")
 			uncreated_center = false
 			$Scene/AudioStreamPlayer.play()
 
@@ -41,7 +35,7 @@ func hide_town_center_text():
 
 
 func _ready():
-	var clamps = $Map.create_map(map_size, tile_size, padding, noise_scale, 2)
+	var clamps = $Map.create_map(GameData.map_size, tile_size, GameData.padding, GameData.noise_scale, GameData.tile_altidude)
 	$"Scene/StaticBody3D"._change_pos_clamp(clamps[0], clamps[1])
 	GameData.resource_changed.connect(func(): tutorial())
 	#GameData.center_created.connect(func(): hide_town_center_text())

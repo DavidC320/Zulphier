@@ -4,6 +4,11 @@ extends Node
 var map_data:Array = []
 var selected_tile
 
+var map_size = 11
+var padding = 0.0
+var noise_scale = 4
+var tile_altidude= 4
+
 # signals
 
 signal resource_changed
@@ -49,7 +54,7 @@ func check_show(item_data, connection):
 
 
 func check_connection_type(tile):
-	if tile.tile_name.to_lower() in ["road", "foundation"] or tile.building_name.to_lower() == "town center":
+	if tile.tile_name.to_lower() in ["road", "foundation", "dock"] or tile.building_name.to_lower() == "town center":
 		return true
 	return false
 
@@ -61,7 +66,6 @@ func check_for_connections():
 	var map_size = map_data.size()
 	var t_column = start_column
 	var t_row = start_row
-	print(map_size)
 
 	for num in range(3):
 		for num2 in range(3):
@@ -74,15 +78,14 @@ func check_for_connections():
 			t_column += 1
 		t_column = start_column
 		t_row += 1
-	print("done")
 	return false
 		
 
 
 
-func cost_interp(costs):
+func cost_interp(costs, value=1):
 	for cost in costs:
-		change_resource(cost[0], cost[1])
+		change_resource(cost[0], cost[1]*value)
 
 func get_new_total(current_total, number_change, cap, use_cap = true, can_debt= false):
 	var new_total = current_total + number_change
@@ -144,6 +147,6 @@ func check_resources(resource_name:String, change_number:int):
 	}
 
 	var total = resource_dict.get(resource_name)
-	if total > number:
+	if number <= total:
 		return true
 	return false

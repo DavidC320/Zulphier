@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcyqrqobyvqjk"]
+
+[ext_resource type="Script" path="res://Scenes/GameScreen/CameraControl/Camerea controler.gd" id="1_a6nea"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_biwf7"]
+
+[node name="StaticBody3D" type="CharacterBody3D"]
+script = ExtResource("1_a6nea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_biwf7")
+disabled = true
+
+[node name="cameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952231, -0.30538, 0, 0.30538, 0.952231, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="cameraPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, 0)

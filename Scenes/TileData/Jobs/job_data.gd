@@ -85,4 +85,4 @@ func give_reward():
 	for reward in rewards:
 		var item = reward[0]
 		var quantity = reward[1]
-		#GameData.change_resource_number(item, quantity)
+		GameData.change_resource(item, quantity)

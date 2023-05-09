@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://d01nefngteucm"]
+
+[ext_resource type="PackedScene" uid="uid://cnl5j06r7jyap" path="res://Scenes/UI/SpinWidget/spin_widget.tscn" id="1_buvaf"]
+[ext_resource type="Script" path="res://Scenes/UI/Menus/MapMenu/generation_menu.gd" id="1_en708"]
+
+[node name="GenerationMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_en708")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.831373)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.513726)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Create Map"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.513726)
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="mapsize" parent="MarginContainer/VBoxContainer/VBoxContainer5" instance=ExtResource("1_buvaf")]
+unique_name_in_owner = true
+layout_mode = 2
+widget_name = "Map Size"
+min_num = 5.0
+current_number = 11.0
+max_num = 99.0
+jump_num = 2.0
+
+[node name="padding" parent="MarginContainer/VBoxContainer/VBoxContainer5" instance=ExtResource("1_buvaf")]
+layout_mode = 2
+widget_name = "Padding"
+max_num = 1.0
+jump_num = 0.1
+
+[node name="noiseScale" parent="MarginContainer/VBoxContainer/VBoxContainer5" instance=ExtResource("1_buvaf")]
+layout_mode = 2
+widget_name = "Noise Scale"
+min_num = 1.0
+current_number = 4.0
+max_num = 10.0
+jump_num = 1.0
+
+[node name="TileAltidude" parent="MarginContainer/VBoxContainer/VBoxContainer5" instance=ExtResource("1_buvaf")]
+layout_mode = 2
+widget_name = "Tile Altitude"
+current_number = 2.0
+max_num = 5.0
+jump_num = 1.0
+
+[node name="CreateMap" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 40
+text = "Generate Map"
+
+[connection signal="pressed" from="MarginContainer/CreateMap" to="." method="_on_create_map_pressed"]
