@@ -16,3 +16,4 @@ transform = Transform3D(1, 0, 0, 0, 0.952231, -0.30538, 0, 0.30538, 0.952231, 0,
 
 [node name="Camera3D" type="Camera3D" parent="cameraPivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, 0)
+cull_mask = 1048573

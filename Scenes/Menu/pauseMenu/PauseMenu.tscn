@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1uo4k8oqfv2p"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/pauseMenu/PauseMenu.gd" id="1_fgger"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_fgger")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.862745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 148
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 59
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="BackGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Back to Game"
+
+[node name="BackTitle" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Back to Title Screen"
+
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Restart"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackGame" to="." method="_on_back_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackTitle" to="." method="_on_back_title_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

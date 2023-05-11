@@ -9,6 +9,7 @@ var tile_builder = load("res://Scenes/TileData/TileCreator.gd").new()
 @export var category_name:String = "Category"
 @export_enum("tile", "building", "job", "reward", "cost") var category_mode:String
 @export var color:Color
+@export var child_color:Color
 @export var disable_if_no_connection:bool
 @export var hide_buttons_if_no_connection = false
 @export var seperation_num:int
@@ -19,6 +20,10 @@ var found_connection = false
 
 signal buy_item
 signal show_item
+
+# nodes
+@onready var textLabel = $VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel
+@onready var show_button = $VBoxContainer/MarginContainer/VBoxContainer/ShowButton
 
 
 func get_selected():
@@ -37,6 +42,8 @@ func update_ui(items, connected=true):
 		child.queue_free()
 
 	if not connected and disable_if_no_connection:
+		$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = "No %s" % category_name
+		show_button.disabled = true
 		return
 
 	for item in items:
@@ -47,9 +54,10 @@ func update_ui(items, connected=true):
 			data = tile_builder.building_dict.get(item)
 			add_change_button_ui(data, "building")
 		elif category_mode == "job":
-			job = job_ui.instantiate()
-			job.update_job_ui(item)
-			$VBoxContainer/list.add_child(job)
+			if GameData.check_job_show(item.job_show_reqs):
+				job = job_ui.instantiate()
+				job.update_job_ui(item)
+				$VBoxContainer/list.add_child(job)
 		elif category_mode == "reward":
 			label = colortext.instantiate()
 			label.set_data(item, true)
@@ -59,10 +67,12 @@ func update_ui(items, connected=true):
 			label.set_data(item)
 			$VBoxContainer/list.add_child(label)
 	
-	if $VBoxContainer/list.get_child_count() > 0:
-		visible = true
+	if $VBoxContainer/list.get_child_count() <= 0:
+		$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = "No %s" % category_name
+		$VBoxContainer/MarginContainer/VBoxContainer/ShowButton.disabled = true
 	else:
-		visible = false
+		$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = category_name
+		$VBoxContainer/MarginContainer/VBoxContainer/ShowButton.disabled = false
 
 func change_item(item_data:Dictionary, item_type:String, change_type:String):
 	selected_item = item_data
@@ -84,7 +94,7 @@ func add_change_button_ui(data, ui_mode):
 		return
 
 	var button = change_button.instantiate()
-	button.update_change_button(data, show_check, $VBoxContainer/MarginContainer/ColorRect.color)
+	button.update_change_button(data, show_check, child_color)
 	button.buy_pressed.connect(func(): update_selected_item(data, ui_mode, "buy"))
 	button.show_pressed.connect(func(): update_selected_item(data, ui_mode, "show"))
 	$VBoxContainer/list.add_child(button)

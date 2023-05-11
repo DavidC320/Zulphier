@@ -71,6 +71,11 @@ func create_building(tile, building_name):
 		
 		var building_settings = building_data.get("settings")
 		var setting_data = settings_dict.get(building_settings)
+
+		var avi_levels = setting_data.get("levels")
+		if avi_levels == null:
+			avi_levels = []
+		tile.building_levels = avi_levels
 		
 		# getting the jobs of the building
 		var jobs = setting_data.get("jobs")
@@ -125,4 +130,5 @@ func change_tile(tile, tile_name):
 		tile.tile_tiles = tile_data.get("available tiles")
 		
 		add_building(tile, tile_data)
+		tile.set_level()
 		

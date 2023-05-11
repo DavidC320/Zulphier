@@ -60,7 +60,7 @@ layout_mode = 2
 widget_name = "Map Size"
 min_num = 5.0
 current_number = 11.0
-max_num = 99.0
+max_num = 59.0
 jump_num = 2.0
 
 [node name="padding" parent="MarginContainer/VBoxContainer/VBoxContainer5" instance=ExtResource("1_buvaf")]

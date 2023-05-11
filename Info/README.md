@@ -1,6 +1,7 @@
 # Zulphier Revision 1
 
 start Date | APRIL 13, 2023
-Version | A2.7.1
+Version | B1
+Zulphier Beta
 
-Due to files being corrupted, A lot of scenes and scripts need to be remade.
+Zulphier is a City management game where the player is tasked with conquering dark dungeons to beat a map.

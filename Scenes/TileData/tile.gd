@@ -17,12 +17,22 @@ var tile_tiles = []  # what this tile can be changed to
 # building data
 var building = null
 var building_name = ""
+
+var maxed_level = false
+var building_level = 1
+var building_exp = 0
+var building_level_up = 100
+var building_levels = []
+
 var building_settings = {}
 var job_list = []
 var building_buildings = []  # what can be built on this tile
 var building_tiles = []  # what this tile can be changed to
 
 @export var display_tile = false
+
+signal exp_change
+signal level_up
 
 
 func get_available_items():
@@ -35,6 +45,7 @@ func get_available_items():
 
 func add_job(job_node):
 	if not display_tile:
+		job_node.job_completed.connect(func(): add_exp(job_node.job_exp))
 		$Jobs.add_child(job_node)
 		job_list.append(job_node)
 
@@ -64,9 +75,12 @@ func change_tile(tile_c_name, print_children = false):
 		
 
 func change_building(building_data_name):
+	building_level = 1
+	building_exp = 0
 	building = building_data_name
 	tile_builder.create_building(self, building_data_name)
 	change_building_layer()
+	set_level()
 
 func update_tile():
 	$TileMesh.material_override = load(tile_material)
@@ -74,7 +88,37 @@ func update_tile():
 ###############################################################################
 ############################## Changing the tile ##############################
 ###############################################################################
+##################
+# Setting levels #
+##################
 
+func set_level():
+	if building_levels.size() < building_level:
+		maxed_level = true
+		return
+	else:
+		maxed_level = false
+	
+	var exp_needed_index = building_level - 1
+	var exp_need = building_levels[exp_needed_index]
+	print(exp_need)
+	building_level_up = exp_need
+		
+func add_exp(number):
+	if not maxed_level:
+		building_exp += number
+		if building_exp >= building_level_up:
+			building_exp = 0
+			building_level += 1
+			set_level()
+			$Level_up.play()
+			emit_signal("level_up")
+		emit_signal("exp_change")
+	
+
+##################
+# Setting levels #
+##################
 ################################
 # Duplicating tile data to ui  #
 ################################

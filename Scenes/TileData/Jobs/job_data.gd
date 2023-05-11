@@ -11,6 +11,8 @@ var worker_cap:int = 4
 
 var job_time:float = 1.0
 var rewards:Array = []
+var job_exp:int
+var job_show_reqs:Array
 
 signal job_completed
 signal job_stopped
@@ -22,6 +24,15 @@ func set_job(job_data):
 	worker_cap = job_data.get("worker cap")
 	job_time = float(job_data.get("time"))
 	rewards = job_data.get("rewards")
+	var show_reqs = job_data.get("show")
+	if show_reqs == null:
+		show_reqs = []
+	job_show_reqs = show_reqs
+
+	var _exp = job_data.get("exp")
+	if _exp == null:
+		_exp = 0
+	job_exp = _exp
 
 
 func update_job(workers:int, repeat:bool):
@@ -46,8 +57,6 @@ func change_workers(number):
 			global_worker_change = number_of_workers - worker_cap
 		else:
 			number_of_workers = new_total_workers
-		
-		print(global_worker_change)
 		GameData.change_resource("population", global_worker_change)
 
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="1_hep7q"]
 [ext_resource type="Script" path="res://Scenes/Menu/Title/title.gd" id="1_l732e"]
 [ext_resource type="FontFile" uid="uid://c6gatjvmy7nhv" path="res://resources/fonts/ancient/Ancient Medium.ttf" id="2_vga65"]
-[ext_resource type="AudioStream" uid="uid://4wfnrh64sdyk" path="res://resources/Music/Sierra On-line - Glass Shutters - 06 Glass shutters.mp3" id="3_au3ef"]
+[ext_resource type="AudioStream" uid="uid://dqpk4vuvt8xa4" path="res://resources/Music/Twin Musicom - Fall of the Solar King.mp3" id="3_32gvw"]
 [ext_resource type="PackedScene" uid="uid://cs6yg8hbg6oxy" path="res://Scenes/UI/TypingText/TypingText.tscn" id="5_cigww"]
 [ext_resource type="PackedScene" uid="uid://c1judp25rju7m" path="res://Scenes/UI/Menus/Title_menu.tscn" id="5_xj1lb"]
 [ext_resource type="PackedScene" uid="uid://d01nefngteucm" path="res://Scenes/UI/Menus/MapMenu/generation_menu.tscn" id="6_4cpq0"]
@@ -415,7 +415,7 @@ transform = Transform3D(2, 0, 0, 0, 1.99726, 0.104672, 0, -0.104672, 1.99726, 0,
 mesh = SubResource("TextMesh_5e14k")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="scene"]
-stream = ExtResource("3_au3ef")
+stream = ExtResource("3_32gvw")
 autoplay = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="scene"]

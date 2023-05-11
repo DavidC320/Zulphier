@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsb17jdls0o7j"]
+[gd_scene load_steps=19 format=3 uid="uid://bsb17jdls0o7j"]
 
 [ext_resource type="Script" path="res://Scenes/GameScreen/GameScreen.gd" id="1_pcrt0"]
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="2_ddi4k"]
@@ -7,13 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://be4rro4cdoti8" path="res://Scenes/UI/ResourceUI/ResourceUi.tscn" id="4_hoguo"]
 [ext_resource type="PackedScene" uid="uid://dtu8gaihahcmi" path="res://Scenes/UI/GenerateMapButton/GenerateNewMap.tscn" id="5_5vqim"]
 [ext_resource type="PackedScene" uid="uid://ceb7xaelbuink" path="res://Scenes/UI/TileDataUi/tile_data_ui.tscn" id="6_scgt7"]
+[ext_resource type="PackedScene" uid="uid://d1uo4k8oqfv2p" path="res://Scenes/Menu/pauseMenu/PauseMenu.tscn" id="8_1c0h5"]
+[ext_resource type="PackedScene" uid="uid://d2skrvmru0424" path="res://Scenes/Menu/WinScreen/Win screen.tscn" id="9_aya37"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qgtx"]
 sky_top_color = Color(0.0941176, 0.776471, 0.854902, 1)
 sky_horizon_color = Color(0.603922, 0.615686, 0.631373, 1)
 ground_bottom_color = Color(0.152941, 0.0627451, 1, 1)
 ground_horizon_color = Color(0.188235, 0.196078, 0.203922, 1)
-ground_curve = 0.0696444
+ground_curve = 0.815722
 
 [sub_resource type="Sky" id="Sky_aohwy"]
 sky_material = SubResource("ProceduralSkyMaterial_6qgtx")
@@ -37,6 +39,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Scene/DirectionalLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_qnk53"]
 resource_name = "Start_Game"
@@ -59,6 +73,211 @@ _data = {
 "Start_Game": SubResource("Animation_qnk53")
 }
 
+[sub_resource type="Animation" id="Animation_y8dsr"]
+resource_name = "Day_night"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0941176, 0.776471, 0.854902, 1), Color(0.211765, 0, 0.305882, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.603922, 0.615686, 0.631373, 1), Color(0.00784314, 0, 0.0156863, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.152941, 0.0627451, 1, 1), Color(0.0392157, 0, 0.419608, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.188235, 0.196078, 0.203922, 1), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_curve")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.02, 0.815722]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_curve")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.15]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Scene/DirectionalLight3D:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Scene/DirectionalLight3D:light_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.211765, 0, 0.305882, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y8i04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0941176, 0.776471, 0.854902, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.603922, 0.615686, 0.631373, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.152941, 0.0627451, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.188235, 0.196078, 0.203922, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_curve")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.815722]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_curve")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Scene/DirectionalLight3D:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Scene/DirectionalLight3D:light_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqi0q"]
+_data = {
+"Day_night": SubResource("Animation_y8dsr"),
+"RESET": SubResource("Animation_y8i04")
+}
+
 [node name="GameScreen" type="Node3D"]
 script = ExtResource("1_pcrt0")
 
@@ -69,10 +288,8 @@ script = ExtResource("1_pcrt0")
 [node name="StaticBody3D" parent="Scene" instance=ExtResource("3_3h054")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
-transform = Transform3D(0.865933, 0.383314, -0.321296, -0.000332384, 0.642826, 0.766012, 0.500161, -0.663208, 0.556771, -16, 9, 6.719)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Scene"]
-transform = Transform3D(0.866025, -0.383022, 0.321394, 0, 0.642788, 0.766044, -0.5, -0.663414, 0.55667, 16, 9, 6.719)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
 environment = SubResource("Environment_lwib3")
@@ -89,8 +306,13 @@ offset_bottom = 40.0
 [node name="MoneyUi" parent="Control" instance=ExtResource("4_hoguo")]
 
 [node name="GenerateNewMap" parent="Control" instance=ExtResource("5_5vqim")]
+visible = false
 
 [node name="TileDataUI" parent="Control" instance=ExtResource("6_scgt7")]
+
+[node name="PauseMenu" parent="Control" instance=ExtResource("8_1c0h5")]
+
+[node name="Win screen" parent="Control" instance=ExtResource("9_aya37")]
 
 [node name="Animation" type="Node" parent="."]
 
@@ -98,3 +320,19 @@ offset_bottom = 40.0
 libraries = {
 "": SubResource("AnimationLibrary_woccp")
 }
+
+[node name="day_night" type="AnimationPlayer" parent="Animation"]
+libraries = {
+"": SubResource("AnimationLibrary_hqi0q")
+}
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="day_timer" type="Timer" parent="Timers"]
+wait_time = 120.0
+
+[node name="night_timer" type="Timer" parent="Timers"]
+wait_time = 120.0
+
+[connection signal="timeout" from="Timers/day_timer" to="." method="_on_day_timer_timeout"]
+[connection signal="timeout" from="Timers/night_timer" to="." method="_on_night_timer_timeout"]

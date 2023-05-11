@@ -1,5 +1,19 @@
 # Notes
 
+## 5/9/2023
+
+I need to add a goal and a way to lose. So to do this I need to add a time limit
+for each day for maybe 10 minutes. each day the will the population will eat one
+food, fi there is not enough food, those who are left just die.
+for the end of the game the dungeon's will have 3 jobs "Explore", "Raid", and
+"Conquer"
+Explore will give the player more population and add 1 to the exp for the dugneon
+Raid will give the player resources and 10 to exp
+Conquer will allow to the player to convert it into a land mark which ends the
+game.
+To do all of this I need to add a day and night cycle to the game
+then I need to give the dungeons a level, exp and give jobs the ability to show,
+and give exp to buildings.
 ## 5/6/2023
 
 Still fixing things and it's fucking awful, I just need to make the new change button update it's name on it's own, and add functionality to the show and buy functions. fter that I need to update teh title screen .

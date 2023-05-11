@@ -3,6 +3,20 @@
 ---
 
 
+## 5/10/2023
+
+	Fixed
+	If the previous building leveled up, the Tile data ui would swap back to the tile if it wasn't selected.
+
+## 5/9/2023
+
+	Features
+	all dungeons can be conquered to create gilded structures
+	there is a day and night cycle now
+	buildings can now level up
+	gave models to buildings missing them
+	Added the pause menu
+
 ## 5/8/2023
 
 	Bug fixes

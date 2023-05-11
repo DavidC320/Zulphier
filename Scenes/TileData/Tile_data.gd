@@ -93,14 +93,40 @@ var perlin_gnerate_tile_list = [
 var settings_dict = {
 	"dungeon settings" : {
 		"type" : "dungeon",
+		"levels" : [
+			1, # 1 5
+			1, # 2 50
+			1 # 3 500
+		],
 		"building effects" : [],
 		"jobs" : [
 			{
 				"name" : "Explore",
+				"show" : [],
+				"exp" : 1,
 				"description": "Send your intreped heroes into the depths",
 				"worker cap" : 4,
 				"time" : 120,
-				"rewards" : [["money", 100]]
+				"rewards" : [["population", 1]]
+			},
+			{
+				"name" : "Raid",
+				"show" : [["level", 2]],
+				"exp" : 10,
+				"description": "Send your intreped heroes into the depths",
+				"worker cap" : 4,
+				"time" : 240,
+				"rewards" : [["food", 2], ["wood", 2], ["minerals", 2]]
+			}
+			,
+			{
+				"name" : "Conquer",
+				"show" : [["level", 3]],
+				"exp" : 100,
+				"description": "Send your intreped heroes into the depths",
+				"worker cap" : 4,
+				"time" : 480,
+				"rewards" : [["money", 20]]
 			}
 		]
 	},
@@ -184,6 +210,11 @@ var settings_dict = {
 		"jobs" : []
 		
 	},
+	"gilded settings" : {
+		"type" : "storage",
+		"jobs" : []
+		
+	},
 	
 	"town center settings" : {
 		"type" : "storage",
@@ -207,6 +238,8 @@ var building_dict = {
 		"building effects" : [],
 		"cost" : [],
 		"show" : [],
+		"available buildings" : ["gilded tower"],
+		"available tiles" : [],
 		"model" : "res://resources/Models/Dark Tower.glb"
 	},
 	"dark fortress" : { # dark fortress
@@ -216,6 +249,8 @@ var building_dict = {
 		"building effects" : [],
 		"cost" : [],
 		"show" : [],
+		"available buildings" : ["gilded fortress"],
+		"available tiles" : [],
 		"model" : "res://resources/Models/Dark Fortress.glb"
 	},
 	"dark pit" : {
@@ -225,6 +260,8 @@ var building_dict = {
 		"building effects" : [],
 		"cost" : [],
 		"show" : [],
+		"available buildings" : ["gilded pit"],
+		"available tiles" : [],
 		"model" : "res://resources/Models/Dark Pit.glb"
 	},
 	"dark portal" : {
@@ -234,6 +271,8 @@ var building_dict = {
 		"building effects" : [],
 		"cost" : [],
 		"show" : [],
+		"available buildings" : ["gilded portal"],
+		"available tiles" : [],
 		"model" : "res://resources/Models/Dark Portal.glb"
 	},
 	"dark castle" : {
@@ -243,7 +282,59 @@ var building_dict = {
 		"building effects" : [],
 		"cost" : [],
 		"show" : [],
+		"available buildings" : ["gilded castle"],
+		"available tiles" : [],
 		"model" : "res://resources/Models/Dark Castle.glb"
+	},
+	
+####################################################################################################
+######################################## Conquered dungeons ########################################
+####################################################################################################
+
+	"gilded tower" : {
+		"name" : "Gilded Tower",
+		"settings" : "gilded settings",
+		"desc" : "A watch tower fit for a high wizard.",
+		"building effects" : [["conquer", 1]],
+		"cost" : [],
+		"show" : [["level", 4]],
+		"model" : "res://resources/Models/Gilded_dungeons/Gilded_Tower.glb"
+	},
+	"gilded fortress" : { # dark fortress
+		"name" : "Gilded Fortress",
+		"settings" : "gilded settings",
+		"desc" : "A Barrack for to train elite.",
+		"building effects" : [["conquer", 1]],
+		"cost" : [],
+		"show" : [["level", 4]],
+		"model" : "res://resources/Models/Gilded_dungeons/Gilded_Fortress.glb"
+	},
+	"gilded pit" : {
+		"name" : "Gilded Pit",
+		"settings" : "gilded settings",
+		"desc" : "A deep hole full of ores unkown to man.",
+		"building effects" : [["conquer", 1]],
+		"cost" : [],
+		"show" : [["level", 4]],
+		"model" : "res://resources/Models/Gilded_dungeons/Gilded_Pit.glb"
+	},
+	"gilded portal" : {
+		"name" : "Gilded Portal",
+		"settings" : "gilded settings",
+		"desc" : "A worm whole to a pocket demension for stroage.",
+		"building effects" : [["conquer", 1]],
+		"cost" : [],
+		"show" : [["level", 4]],
+		"model" : "res://resources/Models/Gilded_dungeons/Gilded_Portal.glb"
+	},
+	"gilded castle" : {
+		"name" : "Gilded Castle",
+		"settings" : "gilded settings",
+		"desc" : "A bastion of trade. May thee be conenctd with the world",
+		"building effects" : [["conquer", 1]],
+		"cost" : [],
+		"show" : [["level", 4]],
+		"model" : "res://resources/Models/Gilded_dungeons/Gilded_Castle.glb"
 	},
 	
 ###############################################################################
@@ -264,7 +355,7 @@ var building_dict = {
 			],
 		"cost" : [],
 		"show" : ["only", "anywhere"],
-		"model" : null
+		"model" : "res://resources/Models/Buildings/center.glb"
 	},
 	
 	"house" : {
@@ -283,7 +374,7 @@ var building_dict = {
 		"building effects" : [["wood cap", 2], ["money cap", 2], ["food cap", 2], ["mineral cap", 2]],
 		"cost" : [["wood", 2]],
 		"show" : [],
-		"model" : null
+		"model" : "res://resources/Models/Buildings/Warehouse.glb"
 	},
 	"vault" : {
 		"name" : "Vault",
@@ -292,7 +383,7 @@ var building_dict = {
 		"building effects" : [["money cap", 4]],
 		"cost" : [["wood", 1], ["minerals", 1]],
 		"show" : [],
-		"model" : null
+		"model" : "res://resources/Models/Buildings/Vault.glb"
 		
 	},
 	"lumber yard" : {
@@ -302,7 +393,7 @@ var building_dict = {
 		"building effects" : [["wood cap", 4]],
 		"cost" : [["wood", 2]],
 		"show" : [],
-		"model" : null
+		"model" : "res://resources/Models/Buildings/Woodyard.glb"
 		
 	},
 	"lumber mill" : {
@@ -321,7 +412,7 @@ var building_dict = {
 		"building effects" : [["food cap", 4]],
 		"cost" : [["wood", 2]],
 		"show" : [],
-		"model" : null
+		"model" : "res://resources/Models/Buildings/Tradecenter.glb"
 	},
 	"fishery" : {
 		"name" : "Fishery",
@@ -339,7 +430,7 @@ var building_dict = {
 		"building effects" : [["mineral cap", 4]],
 		"cost" : [["minerals", 2]],
 		"show" : [],
-		"model" : null
+		"model" : "res://resources/Models/Buildings/Stoneyard.glb"
 	},
 	"mine" : {
 		"name" : "Mine",

@@ -3,6 +3,8 @@ extends CanvasLayer
 
 func update_label():
 	# nodes needed
+	if not visible:
+		visible = true
 	var money_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/money"
 	var population_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/population"
 	var wood_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/wood"
