@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceownci4gfyay"]
+
+[ext_resource type="Script" path="res://Scenes/TileData/BuildingBase/BuildingBase.gd" id="1_rrrl4"]
+
+[sub_resource type="TextMesh" id="TextMesh_81cbd"]
+text = "T"
+font_size = 30
+vertical_alignment = 2
+
+[sub_resource type="PrismMesh" id="PrismMesh_kkhb4"]
+
+[node name="BuildingBase" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_rrrl4")
+
+[node name="Deckorations" type="Node3D" parent="."]
+
+[node name="BottomLeftSpot" type="Node3D" parent="Deckorations"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.8, 0, 0.8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Deckorations/BottomLeftSpot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0882081, 0)
+mesh = SubResource("TextMesh_81cbd")
+
+[node name="TopLeftSpot" type="Node3D" parent="Deckorations"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.8, 0, -0.8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Deckorations/TopLeftSpot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0882081, 0)
+mesh = SubResource("TextMesh_81cbd")
+
+[node name="BottomRightSpot" type="Node3D" parent="Deckorations"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.8, 0, 0.8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Deckorations/BottomRightSpot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0882081, 0)
+mesh = SubResource("TextMesh_81cbd")
+
+[node name="TopRightSpot" type="Node3D" parent="Deckorations"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.8, 0, -0.8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Deckorations/TopRightSpot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0882081, 0)
+mesh = SubResource("TextMesh_81cbd")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Jobs" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0.000933747, 0.00010908, -0.000933741, 1, -6.69925e-05, -0.000109138, 6.68968e-05, 1, 0, 0.5, 0)
+mesh = SubResource("PrismMesh_kkhb4")

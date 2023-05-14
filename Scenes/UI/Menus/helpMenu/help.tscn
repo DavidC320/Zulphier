@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://1gecqrllrsps"]
+
+[ext_resource type="Script" path="res://Help.gd" id="1_43jhi"]
+
+[node name="Help" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43jhi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0.317647, 0.317647, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Close Menu"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Controls"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Movement - WASD & Directional keys"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Zoom - Mouse Scroll"
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Zoom - Mouse Scroll"
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Pause - Escape"
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Select Tile - Mouse Left Click"
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Getting Started"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 19
+text = "Select a tile where you want to place your town center. The town center will act as your first connection point to other tiles. Creating the town center will start the game. you can build around the center such as production and storage buildings along with other tiles like roads. Roads allows you to expand further from the center. You should prioitize getting minerals first as they are used to make roads. To do this you shoud either create a fundation and build a mine or go to a mountian tile and build a mine. Once you have production up you can work on conquering the dungeon in the center."
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

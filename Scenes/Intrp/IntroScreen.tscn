@@ -1,0 +1,389 @@
+[gd_scene load_steps=17 format=3 uid="uid://bmyym02llcgyt"]
+
+[ext_resource type="PackedScene" uid="uid://b82j28s2n7qky" path="res://Scenes/Skull/skullv_2.tscn" id="1_eo1b7"]
+[ext_resource type="Script" path="res://Scenes/Intrp/IntroScreen.gd" id="1_wkbph"]
+[ext_resource type="AudioStream" uid="uid://wfvrc44qe3e6" path="res://resources/SFX/643699__snowfightstudios__devil-demon_laughs.wav" id="3_d3esl"]
+[ext_resource type="AudioStream" uid="uid://dilos3nfm86ia" path="res://resources/Music/Twin Musicom - The Evening of Departure(1).mp3" id="3_urxtk"]
+[ext_resource type="PackedScene" uid="uid://cs6yg8hbg6oxy" path="res://Scenes/UI/TypingText/TypingText.tscn" id="4_vjxk6"]
+
+[sub_resource type="Environment" id="Environment_xar2c"]
+background_mode = 1
+
+[sub_resource type="Animation" id="Animation_nk5yk"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_hh186"]
+resource_name = "start"
+length = 65.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skullv2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Intro"],
+"method": &"play_aniamtions"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/HBoxContainer/VBoxContainer/TypingText")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9, 9.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"reverse_animation"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/HBoxContainer/VBoxContainer2/TypingText")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9.8, 20),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"reverse_animation"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/HBoxContainer/VBoxContainer/TypingText2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(20.1, 29.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"reverse_animation"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/HBoxContainer/VBoxContainer2/TypingText2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(30, 40),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"reverse_animation"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/HBoxContainer/VBoxContainer/TypingText3")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(39.9, 49.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"reverse_animation"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/HBoxContainer/VBoxContainer2/TypingText3")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(49.8, 60),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"reverse_animation"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(64),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_outro"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpsee"]
+_data = {
+"RESET": SubResource("Animation_nk5yk"),
+"start": SubResource("Animation_hh186")
+}
+
+[sub_resource type="Animation" id="Animation_5smus"]
+resource_name = "Outro"
+length = 1.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sfx/AudioStreamPlayer2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skullv2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["laughing"],
+"method": &"play_aniamtions"
+}, {
+"args": ["Outro"],
+"method": &"play_aniamtions"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_to_screen"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xkhdw"]
+_data = {
+"Outro": SubResource("Animation_5smus")
+}
+
+[sub_resource type="Curve" id="Curve_ihgfu"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vptgl"]
+curve = SubResource("Curve_ihgfu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_swcxs"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+gravity = Vector3(0, 0, -1)
+initial_velocity_min = -2.0
+initial_velocity_max = 2.0
+radial_accel_curve = SubResource("CurveTexture_vptgl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msc75"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_377gt"]
+material = SubResource("StandardMaterial3D_msc75")
+text = "+"
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_wkbph")
+
+[node name="Skullv2" parent="." instance=ExtResource("1_eo1b7")]
+transform = Transform3D(1, 0, 0, 0, 0.999302, -0.0373588, 0, 0.0373588, 0.999302, 0, 0, 0)
+
+[node name="scene items" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="scene items"]
+environment = SubResource("Environment_xar2c")
+
+[node name="Camera3D" type="Camera3D" parent="scene items"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="scene items"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.67689, 4)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="scene items"]
+transform = Transform3D(1, 0, 0, 0, 0.86395, -0.503578, 0, 0.503578, 0.86395, -2.38419e-07, -1.50082, 3.42296)
+light_color = Color(1, 0.298039, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TypingText" parent="CanvasLayer/HBoxContainer/VBoxContainer" instance=ExtResource("4_vjxk6")]
+layout_mode = 2
+label_text = "The world was in a renaissance of science 
+and magic. Nations came together
+and sprouted inovation that would change 
+the Plane of Ave."
+
+[node name="TypingText2" parent="CanvasLayer/HBoxContainer/VBoxContainer" instance=ExtResource("4_vjxk6")]
+layout_mode = 2
+label_text = "The many where lost, knolledge, nations, 
+homes. the surviving hide around the
+corners of the once prosperous world. 
+Though a message came to the surivers 
+that great champions would amongst
+them and will cage the darkness within 
+the core of Ave."
+
+[node name="TypingText3" parent="CanvasLayer/HBoxContainer/VBoxContainer" instance=ExtResource("4_vjxk6")]
+layout_mode = 2
+label_text = "The nations could once rise again in a 
+desolate world. Millenia would pass since 
+the fight. seldom was history at the time 
+as the nations worked hard to rebuild. 
+great strucures were built and prophecies 
+where written."
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TypingText" parent="CanvasLayer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_vjxk6")]
+layout_mode = 2
+label_text = "One day the sky fractured into a festering 
+womb that birthed a dark mass of pure hate.
+It descended upon the Plane and curropted 
+and twisted anything within its aura of malice"
+
+[node name="TypingText2" parent="CanvasLayer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_vjxk6")]
+layout_mode = 2
+label_text = "The champions came, there strength 
+blessed by the their gods rose against the 
+mass. The fight was grueling, 3 days of 
+bloodshed and the beast was weakened 
+and chained and drugged down to the 
+core of Ave to never be upon them ever 
+again."
+
+[node name="TypingText3" parent="CanvasLayer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_vjxk6")]
+layout_mode = 2
+label_text = "The sky has dimmed and dark strucures 
+start manifesting around the plane from 
+no where. they reek of havoc and chaos as 
+demons emerge out of them. It is time to 
+protect the land of Ave."
+
+[node name="TypingText" parent="CanvasLayer" instance=ExtResource("4_vjxk6")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -23.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+label_text = "Tap to skip"
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_urxtk")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_d3esl")
+
+[node name="animations" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="animations"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_vpsee")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="animations"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_xkhdw")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309431, -0.502423)
+amount = 100
+lifetime = 10.0
+explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_swcxs")
+draw_pass_1 = SubResource("TextMesh_377gt")

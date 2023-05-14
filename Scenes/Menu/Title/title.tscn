@@ -1,12 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4jd27pa71kvh"]
+[gd_scene load_steps=18 format=3 uid="uid://bfdbeaqu1cdue"]
 
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="1_hep7q"]
 [ext_resource type="Script" path="res://Scenes/Menu/Title/title.gd" id="1_l732e"]
 [ext_resource type="FontFile" uid="uid://c6gatjvmy7nhv" path="res://resources/fonts/ancient/Ancient Medium.ttf" id="2_vga65"]
 [ext_resource type="AudioStream" uid="uid://dqpk4vuvt8xa4" path="res://resources/Music/Twin Musicom - Fall of the Solar King.mp3" id="3_32gvw"]
-[ext_resource type="PackedScene" uid="uid://cs6yg8hbg6oxy" path="res://Scenes/UI/TypingText/TypingText.tscn" id="5_cigww"]
+[ext_resource type="PackedScene" uid="uid://cs6yg8hbg6oxy" path="res://Scenes/UI/TypingText/TypingText.tscn" id="5_k3j3e"]
 [ext_resource type="PackedScene" uid="uid://c1judp25rju7m" path="res://Scenes/UI/Menus/Title_menu.tscn" id="5_xj1lb"]
-[ext_resource type="PackedScene" uid="uid://d01nefngteucm" path="res://Scenes/UI/Menus/MapMenu/generation_menu.tscn" id="6_4cpq0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o85eu"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -90,7 +89,7 @@ tracks/0/path = NodePath("../scene/SpotLight3D:spot_angle")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 31.8, 32.8),
+"times": PackedFloat32Array(0, 10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [7.42748, 7.42748, 53.3318]
@@ -102,7 +101,7 @@ tracks/1/path = NodePath("../scene/WorldEnvironment:environment:sky:sky_material
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 31.8, 32.8),
+"times": PackedFloat32Array(0, 10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.333333, 0.537255, 1, 1)]
@@ -114,7 +113,7 @@ tracks/2/path = NodePath("../scene/WorldEnvironment:environment:sky:sky_material
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 31.8, 32.8),
+"times": PackedFloat32Array(0, 10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
@@ -126,7 +125,7 @@ tracks/3/path = NodePath("../scene/WorldEnvironment:environment:sky:sky_material
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 31.8, 32.8),
+"times": PackedFloat32Array(0, 10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.333333, 0.537255, 1, 1)]
@@ -138,7 +137,7 @@ tracks/4/path = NodePath("../scene/WorldEnvironment:environment:sky:sky_material
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 31.8, 32.8),
+"times": PackedFloat32Array(0, 10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.639216, 0.756863, 1, 1)]
@@ -150,7 +149,7 @@ tracks/5/path = NodePath("../scene/props/MeshInstance3D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(31.8, 33.8),
+"times": PackedFloat32Array(10.1, 12.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 17.2806, -7.6926), Vector3(0, 6, -7.693)]
@@ -162,7 +161,7 @@ tracks/6/path = NodePath("../scene/DirectionalLight3D:light_energy")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(31.8, 32.8),
+"times": PackedFloat32Array(10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.0]
@@ -174,7 +173,7 @@ tracks/7/path = NodePath("../scene/DirectionalLight3D2:light_energy")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(31.8, 32.8),
+"times": PackedFloat32Array(10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.0]
@@ -186,7 +185,7 @@ tracks/8/path = NodePath("../scene/SpotLight3D:light_energy")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(31.8, 32.8),
+"times": PackedFloat32Array(10.1, 11.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [7.626, 0.0]
@@ -198,7 +197,7 @@ tracks/9/path = NodePath("../scene/WorldEnvironment:environment:sky")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(31.7, 31.8),
+"times": PackedFloat32Array(10, 10.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [null, SubResource("Sky_ac48i")]
@@ -210,7 +209,7 @@ tracks/10/path = NodePath("../scene/WorldEnvironment:environment:background_mode
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(31.7, 31.8),
+"times": PackedFloat32Array(10, 10.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1, 2]
@@ -218,35 +217,15 @@ tracks/10/keys = {
 tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../Menu/HBoxContainer/VBoxContainer/TypingText")
+tracks/11/path = NodePath("../Menu/TypingText")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 16.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"play_animation"
-}, {
-"args": [],
-"method": &"reverse_animation"
-}]
-}
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../Menu/HBoxContainer/VBoxContainer2/TypingText2")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(16, 30),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play_animation"
-}, {
-"args": [],
-"method": &"reverse_animation"
 }]
 }
 
@@ -453,59 +432,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu"]
+[node name="TypingText" parent="Menu" instance=ExtResource("5_k3j3e")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -23.0
+offset_right = 0.5
 grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 0
-theme_override_constants/separation = 118
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="TypingText" parent="Menu/HBoxContainer/VBoxContainer" instance=ExtResource("5_cigww")]
-layout_mode = 2
-label_text = "Eons ago, this world was in a reneccance of 
-peace and technolgy in Iae. Nations traded and 
-allies where gained or lost. A cycle 
-undesterbed for millina. 
-The sky one day fractured. A pulsating 
-mass of liquid malevolence floated down 
-from it's wretched womb. In an isntant it 
-started recking havoic upon the world 
-with it's curropting fire. The Apocholypse 
-had started."
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="TypingText2" parent="Menu/HBoxContainer/VBoxContainer2" instance=ExtResource("5_cigww")]
-layout_mode = 2
-label_text = "For years the people of Iae lived under 
-the parasitic veins of the dark mass. 
-Nations falling, dispering or being twisted
- into amalga. Soon the few who survived 
-would rise and build anew. The left 
-brougth their strongest champions to the 
-plane of Iae. the champions bound the 
-mass in chains made of spectrual might 
-and sunk the mass into the core of Iae. 
-The world healed for eons till now."
+grow_vertical = 0
+mouse_filter = 2
+label_text = "Tap the screen to play."
 
 [node name="Title_menu" parent="Menu" instance=ExtResource("5_xj1lb")]
 layout_mode = 1
-
-[node name="GenerationMenu" parent="Menu" instance=ExtResource("6_4cpq0")]
-visible = false
-layout_mode = 1
-
-[connection signal="play_game" from="Menu/Title_menu" to="." method="_on_title_menu_play_game"]

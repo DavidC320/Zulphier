@@ -6,23 +6,20 @@
 [ext_resource type="AudioStream" uid="uid://kc3oqddtglau" path="res://resources/SFX/364690__alegemaate__human-impact-on-ground.wav" id="4_6c5rr"]
 [ext_resource type="AudioStream" uid="uid://dt5fk8tt4vwff" path="res://resources/SFX/371353__mrthenoronha__iron-hits.wav" id="5_2s65y"]
 
-[node name="TileDataUI" type="CanvasLayer"]
-script = ExtResource("1_dr7n4")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TileDataUI" type="MarginContainer"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -196.0
 grow_horizontal = 0
 grow_vertical = 2
-size_flags_horizontal = 8
-mouse_filter = 0
+script = ExtResource("1_dr7n4")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
@@ -37,21 +34,21 @@ t
 a
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 
-[node name="TileVisuliser" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TileVisuliser" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser"]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer/TileVisuliser"]
 layout_mode = 2
 color = Color(0, 0, 0, 0.501961)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/TileVisuliser"]
 layout_mode = 2
 
-[node name="TileNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+[node name="TileNameLabel" type="Label" parent="HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
 custom_minimum_size = Vector2(145, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -59,43 +56,43 @@ text = "Tile Name"
 horizontal_alignment = 1
 text_overrun_behavior = 3
 
-[node name="BuildingNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+[node name="BuildingNameLabel" type="Label" parent="HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
 layout_mode = 2
 text = "Building Name"
 horizontal_alignment = 1
 
-[node name="BuildingLevelLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
+[node name="BuildingLevelLabel" type="Label" parent="HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer"]
 layout_mode = 2
 text = "Level ?/?"
 horizontal_alignment = 1
 
-[node name="SubViewportContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer" instance=ExtResource("1_dqwld")]
+[node name="SubViewportContainer" parent="HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer" instance=ExtResource("1_dqwld")]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.121569, 0.121569, 0.121569, 0.345098)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 21
 
-[node name="Buildings" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+[node name="Buildings" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
 layout_mode = 2
 category_name = "Buildings"
 category_mode = "building"
@@ -104,7 +101,7 @@ child_color = Color(0.447059, 0.337255, 0.25098, 1)
 hide_buttons_if_no_connection = true
 seperation_num = 30
 
-[node name="Tiles" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+[node name="Tiles" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
 layout_mode = 2
 category_name = "Tiles"
 category_mode = "tile"
@@ -113,7 +110,7 @@ child_color = Color(0.207843, 0.333333, 0.631373, 1)
 hide_buttons_if_no_connection = true
 seperation_num = 30
 
-[node name="Jobs" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
+[node name="Jobs" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_j3ogv")]
 layout_mode = 2
 category_name = "Jobs"
 category_mode = "job"
@@ -130,4 +127,4 @@ stream = ExtResource("4_6c5rr")
 stream = ExtResource("5_2s65y")
 volume_db = -0.5
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Zulphier Remake"
-run/main_scene="res://Scenes/Menu/Title/title.tscn"
+config/description="Zulphier is a City Management game where the player has to beat a dark dungeon in oder to win the game."
+run/main_scene="res://Scenes/Intrp/IntroScreen.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,10 @@ config/icon="res://icon.svg"
 
 GameData="*res://Scenes/Scripts/GameData.gd"
 Fade="*res://Scenes/Transistions/fade.tscn"
+
+[display]
+
+window/size/mode=2
 
 [input]
 

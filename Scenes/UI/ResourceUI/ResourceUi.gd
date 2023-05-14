@@ -1,15 +1,15 @@
-extends CanvasLayer
+extends MarginContainer
 
 
 func update_label():
 	# nodes needed
 	if not visible:
 		visible = true
-	var money_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/money"
-	var population_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/population"
-	var wood_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/wood"
-	var food_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/food"
-	var minerals_label = $"MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/minerals"
+	var money_label = $"VBoxContainer/HBoxContainer/VBoxContainer2/money"
+	var population_label = $"VBoxContainer/HBoxContainer/VBoxContainer2/population"
+	var wood_label = $"VBoxContainer/HBoxContainer/VBoxContainer2/wood"
+	var food_label = $"VBoxContainer/HBoxContainer/VBoxContainer2/food"
+	var minerals_label = $"VBoxContainer/HBoxContainer/VBoxContainer2/minerals"
 	
 	money_label.text = "%s / %s" % [GameData.money, GameData.money_cap]
 	population_label.text = "%s / %s" % [GameData.population, GameData.population_cap]
@@ -25,9 +25,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	update_label()
+	pass
 
 
 func _on_button_pressed():
-	var info_list = $"MarginContainer/VBoxContainer/HBoxContainer"
+	var info_list = $"VBoxContainer/HBoxContainer"
 	info_list.visible = not info_list.visible

@@ -1,36 +1,51 @@
-[gd_scene load_steps=19 format=3 uid="uid://bsb17jdls0o7j"]
+[gd_scene load_steps=18 format=3 uid="uid://d27fjclwor75m"]
 
 [ext_resource type="Script" path="res://Scenes/GameScreen/GameScreen.gd" id="1_pcrt0"]
 [ext_resource type="PackedScene" uid="uid://dp4sm6nskvw56" path="res://Scenes/MapMaker/Map.tscn" id="2_ddi4k"]
 [ext_resource type="PackedScene" uid="uid://dcyqrqobyvqjk" path="res://Scenes/GameScreen/CameraControl/static_body_3d.tscn" id="3_3h054"]
 [ext_resource type="AudioStream" uid="uid://gwsjupglxotm" path="res://resources/Music/Twin Musicom - At the Foot of the Sphinx.mp3" id="4_2i75b"]
 [ext_resource type="PackedScene" uid="uid://be4rro4cdoti8" path="res://Scenes/UI/ResourceUI/ResourceUi.tscn" id="4_hoguo"]
-[ext_resource type="PackedScene" uid="uid://dtu8gaihahcmi" path="res://Scenes/UI/GenerateMapButton/GenerateNewMap.tscn" id="5_5vqim"]
 [ext_resource type="PackedScene" uid="uid://ceb7xaelbuink" path="res://Scenes/UI/TileDataUi/tile_data_ui.tscn" id="6_scgt7"]
-[ext_resource type="PackedScene" uid="uid://d1uo4k8oqfv2p" path="res://Scenes/Menu/pauseMenu/PauseMenu.tscn" id="8_1c0h5"]
+[ext_resource type="PackedScene" uid="uid://dp8eidel8cvuk" path="res://Scenes/UI/Menus/pauseMenu/PauseMenu.tscn" id="8_vtb3y"]
 [ext_resource type="PackedScene" uid="uid://d2skrvmru0424" path="res://Scenes/Menu/WinScreen/Win screen.tscn" id="9_aya37"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qgtx"]
-sky_top_color = Color(0.0941176, 0.776471, 0.854902, 1)
-sky_horizon_color = Color(0.603922, 0.615686, 0.631373, 1)
-ground_bottom_color = Color(0.152941, 0.0627451, 1, 1)
-ground_horizon_color = Color(0.188235, 0.196078, 0.203922, 1)
-ground_curve = 0.815722
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4gpj4"]
+sky_top_color = Color(0.529412, 0.819608, 0.905882, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_curve = 0.0337969
+ground_bottom_color = Color(0.12549, 0.184314, 0.47451, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_curve = 0.00933033
 
-[sub_resource type="Sky" id="Sky_aohwy"]
-sky_material = SubResource("ProceduralSkyMaterial_6qgtx")
+[sub_resource type="Sky" id="Sky_tw4gl"]
+sky_material = SubResource("ProceduralSkyMaterial_4gpj4")
 
-[sub_resource type="Environment" id="Environment_lwib3"]
+[sub_resource type="Environment" id="Environment_agefg"]
 background_mode = 2
 background_energy_multiplier = 0.0
-sky = SubResource("Sky_aohwy")
+sky = SubResource("Sky_tw4gl")
 
-[sub_resource type="Animation" id="Animation_xtljv"]
+[sub_resource type="Animation" id="Animation_vf2pa"]
+resource_name = "Start_Game"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene/WorldEnvironment:environment:background_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_yby6e"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:background_energy_multiplier")
+tracks/0/path = NodePath("Scene/WorldEnvironment:environment:background_energy_multiplier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +57,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Scene/DirectionalLight3D:light_energy")
+tracks/1/path = NodePath("Scene/DirectionalLight3D:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -52,30 +67,15 @@ tracks/1/keys = {
 "values": [1.0]
 }
 
-[sub_resource type="Animation" id="Animation_qnk53"]
-resource_name = "Start_Game"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:background_energy_multiplier")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_woccp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctfay"]
 _data = {
-"RESET": SubResource("Animation_xtljv"),
-"Start_Game": SubResource("Animation_qnk53")
+"RESET": SubResource("Animation_yby6e"),
+"Start_Game": SubResource("Animation_vf2pa")
 }
 
-[sub_resource type="Animation" id="Animation_y8dsr"]
+[sub_resource type="Animation" id="Animation_ui8ka"]
 resource_name = "Day_night"
-length = 12.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,10 +83,10 @@ tracks/0/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 12),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.0941176, 0.776471, 0.854902, 1), Color(0.211765, 0, 0.305882, 1)]
+"values": [Color(0.529412, 0.819608, 0.905882, 1), Color(0.109804, 0.0196078, 0.270588, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -95,10 +95,10 @@ tracks/1/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.603922, 0.615686, 0.631373, 1), Color(0.00784314, 0, 0.0156863, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -107,10 +107,10 @@ tracks/2/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 12),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.152941, 0.0627451, 1, 1), Color(0.0392157, 0, 0.419608, 1)]
+"values": [Color(0.12549, 0.184314, 0.47451, 1), Color(0.0235294, 0.0470588, 0.176471, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -119,61 +119,25 @@ tracks/3/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.188235, 0.196078, 0.203922, 1), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_curve")
+tracks/4/path = NodePath("../Scene/DirectionalLight3D:light_energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 12),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.02, 0.815722]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_curve")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.15, 0.15]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Scene/DirectionalLight3D:light_energy")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Scene/DirectionalLight3D:light_color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.211765, 0, 0.305882, 1)]
+"values": [1.0, 0.125]
 }
 
-[sub_resource type="Animation" id="Animation_y8i04"]
+[sub_resource type="Animation" id="Animation_if4vb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -185,7 +149,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.0941176, 0.776471, 0.854902, 1)]
+"values": [Color(0.529412, 0.819608, 0.905882, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -197,7 +161,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.603922, 0.615686, 0.631373, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -209,7 +173,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.152941, 0.0627451, 1, 1)]
+"values": [Color(0.12549, 0.184314, 0.47451, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -221,61 +185,25 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.188235, 0.196078, 0.203922, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:ground_curve")
+tracks/4/path = NodePath("../Scene/DirectionalLight3D:light_energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.815722]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Scene/WorldEnvironment:environment:sky:sky_material:sky_curve")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.15]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Scene/DirectionalLight3D:light_energy")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [1.0]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Scene/DirectionalLight3D:light_color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqi0q"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6n150"]
 _data = {
-"Day_night": SubResource("Animation_y8dsr"),
-"RESET": SubResource("Animation_y8i04")
+"Day_night": SubResource("Animation_ui8ka"),
+"RESET": SubResource("Animation_if4vb")
 }
 
 [node name="GameScreen" type="Node3D"]
@@ -288,42 +216,40 @@ script = ExtResource("1_pcrt0")
 [node name="StaticBody3D" parent="Scene" instance=ExtResource("3_3h054")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
-environment = SubResource("Environment_lwib3")
+transform = Transform3D(1, 0, 0, 0, 0.444745, 0.895657, 0, -0.895657, 0.444745, -2.38419e-07, 1.83949, -2.73809)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Scene"]
 stream = ExtResource("4_2i75b")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
+environment = SubResource("Environment_agefg")
+
+[node name="Control" type="CanvasLayer" parent="."]
 
 [node name="MoneyUi" parent="Control" instance=ExtResource("4_hoguo")]
-
-[node name="GenerateNewMap" parent="Control" instance=ExtResource("5_5vqim")]
 visible = false
+offset_right = 91.0
+offset_bottom = 176.0
 
 [node name="TileDataUI" parent="Control" instance=ExtResource("6_scgt7")]
+visible = false
 
-[node name="PauseMenu" parent="Control" instance=ExtResource("8_1c0h5")]
+[node name="PauseMenu" parent="Control" instance=ExtResource("8_vtb3y")]
 
 [node name="Win screen" parent="Control" instance=ExtResource("9_aya37")]
+visible = false
 
 [node name="Animation" type="Node" parent="."]
 
 [node name="Start_game" type="AnimationPlayer" parent="Animation"]
+root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_woccp")
+"": SubResource("AnimationLibrary_ctfay")
 }
 
 [node name="day_night" type="AnimationPlayer" parent="Animation"]
 libraries = {
-"": SubResource("AnimationLibrary_hqi0q")
+"": SubResource("AnimationLibrary_6n150")
 }
 
 [node name="Timers" type="Node" parent="."]

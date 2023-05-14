@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://l8atl5js6omx"]
+[gd_scene load_steps=2 format=3 uid="uid://l8atl5js6omx"]
 
-[ext_resource type="PackedScene" uid="uid://cj8tqg3dud440" path="res://Scenes/UI/TileDataUi/CategoryList/CategoryList.tscn" id="1_4js6r"]
 [ext_resource type="Script" path="res://Scenes/UI/TileDataUi/ChangeButton/ChangeButton.gd" id="1_qb2io"]
 
 [node name="ChangeButton" type="MarginContainer"]
@@ -23,21 +22,9 @@ theme_override_font_sizes/font_size = 19
 text = "Item Name"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopSection"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/TopSection/MarginContainer"]
-layout_mode = 2
-color = Color(1, 0, 0, 1)
-
-[node name="Label" type="Label" parent="VBoxContainer/TopSection/MarginContainer"]
-layout_mode = 2
-text = "Not Connected"
-horizontal_alignment = 1
-
 [node name="showButton" type="Button" parent="VBoxContainer/TopSection"]
 layout_mode = 2
-text = "Show"
+text = "Show Item"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -45,14 +32,13 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-color = Color(0.329412, 0.329412, 0.329412, 0.521569)
+color = Color(1, 1, 1, 0.152941)
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Description"
-horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -60,21 +46,45 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 11
 text = "This is a test description for this item that doesn't exist."
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Info" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CategoryList" parent="VBoxContainer/VBoxContainer2" instance=ExtResource("1_4js6r")]
+[node name="Creation_bonus" type="VBoxContainer" parent="VBoxContainer/Info"]
 layout_mode = 2
-category_name = "Rewards"
-category_mode = "reward"
-color = Color(0, 0, 0, 0.105882)
 
-[node name="CategoryList2" parent="VBoxContainer/VBoxContainer2" instance=ExtResource("1_4js6r")]
+[node name="Creation_contianer" type="MarginContainer" parent="VBoxContainer/Info/Creation_bonus"]
 layout_mode = 2
-category_name = "Cost"
-category_mode = "cost"
-color = Color(0, 0, 0, 0.105882)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Info/Creation_bonus/Creation_contianer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.152941)
+
+[node name="Label" type="Label" parent="VBoxContainer/Info/Creation_bonus/Creation_contianer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Creation Bonus"
+
+[node name="BonusList" type="VBoxContainer" parent="VBoxContainer/Info/Creation_bonus"]
+layout_mode = 2
+
+[node name="Cost" type="VBoxContainer" parent="VBoxContainer/Info"]
+layout_mode = 2
+
+[node name="Cost_cont" type="MarginContainer" parent="VBoxContainer/Info/Cost"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Info/Cost/Cost_cont"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.152941)
+
+[node name="Label" type="Label" parent="VBoxContainer/Info/Cost/Cost_cont"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Cost"
+
+[node name="CostList" type="VBoxContainer" parent="VBoxContainer/Info/Cost"]
+layout_mode = 2
 
 [node name="buyButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -39,20 +39,18 @@ _data = {
 "RESET": SubResource("Animation_k7le1")
 }
 
-[node name="Win screen" type="CanvasLayer"]
+[node name="Win screen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_8sw56")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -71.0
-offset_top = -45.0
-offset_right = 71.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
@@ -72,11 +70,7 @@ libraries = {
 }
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer2"]
 layout_mode = 2

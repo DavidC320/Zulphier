@@ -1,17 +1,17 @@
-extends CanvasLayer
+extends MarginContainer
 
 var current_tile = null
 
 # nodes
-@onready var tileNameLabel:Label = $MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/TileNameLabel
-@onready var buildingNameLabel:Label = $MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/BuildingNameLabel
-@onready var tileVisulizer = $MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/SubViewportContainer
-@onready var level_label = $MarginContainer/HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/BuildingLevelLabel
+@onready var tileNameLabel:Label = $HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/TileNameLabel
+@onready var buildingNameLabel:Label = $HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/BuildingNameLabel
+@onready var tileVisulizer = $HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/SubViewportContainer
+@onready var level_label = $HBoxContainer/VBoxContainer/TileVisuliser/VBoxContainer/BuildingLevelLabel
 
 # contiatners
-@onready var tile_contianer = $MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Tiles
-@onready var building_contianer = $MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Buildings
-@onready var job_contianer = $MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Jobs
+@onready var tile_contianer = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Tiles
+@onready var building_contianer = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Buildings
+@onready var job_contianer = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Jobs
 
 # sounds
 @onready var build_sfx =  $sfx/build_building
@@ -110,4 +110,4 @@ func _process(_delta):
 
 
 func _on_button_pressed():
-	$MarginContainer/HBoxContainer/VBoxContainer.visible = not $MarginContainer/HBoxContainer/VBoxContainer.visible
+	$HBoxContainer/VBoxContainer.visible = not $HBoxContainer/VBoxContainer.visible

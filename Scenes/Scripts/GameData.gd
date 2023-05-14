@@ -34,6 +34,24 @@ var mineral_cap = 0
 var center = 0
 
 
+func reset_game():
+	money = 0
+	money_cap = 0
+	
+	population = 0
+	population_cap = 0
+	
+	wood = 0
+	wood_cap = 0
+	
+	food = 0
+	food_cap = 0
+	
+	minerals = 0
+	mineral_cap = 0
+	
+	center = 0
+
 func check_job_show(checks):
 	var show = true
 	

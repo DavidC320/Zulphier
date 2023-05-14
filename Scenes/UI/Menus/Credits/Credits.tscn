@@ -1,0 +1,197 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp08u74tkelmr"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Menus/Credits/Credits.gd" id="1_onwrj"]
+
+[node name="Credits" type="MarginContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -243.5
+offset_right = 243.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_onwrj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 0.835294)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer5"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer5/MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.137255)
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer5/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Developer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer5"]
+layout_mode = 2
+text = "David Cruz"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.137255)
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fall of the Solar King by Twin Musicom (twinmusicom.org)"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "At the Foot of the Sphinx by Twin Musicom (twinmusicom.org)"
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "The Evening of Depature by Twin Musicom (twinmusicom.org)"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.137255)
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Sound Affects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Build tile sfx from Freesound.org"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Build structure sfx from Freesound.org"
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Level up sfx from Freesound.org"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.137255)
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Programs Used"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Godot"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Blender
+"
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Audacity"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4/MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.137255)
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Version A Testers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Wesley Jones"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Nayan Thaker "
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Isaiah VanMeter"
+
+[node name="Label4" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Joseph Leake"
+
+[node name="Label5" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Joshua Nelson"
+
+[node name="Label6" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Kody Fulk"
+
+[node name="Label7" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Bear"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Close credits"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -51,6 +51,7 @@ var list_of_raw_tile_data = [
 	{
 		"name" : "Dock",
 		"material" : "res://resources/materials/dock.tres",
+		"desc" : "Go beyond land and spread creating fisheries and homes.",
 		"perlin value" : null,
 		"create building" : false,
 		"show" : [],
@@ -94,9 +95,9 @@ var settings_dict = {
 	"dungeon settings" : {
 		"type" : "dungeon",
 		"levels" : [
-			1, # 1 5
-			1, # 2 50
-			1 # 3 500
+			5, # 1 5
+			20, # 2 50
+			100 # 3 500
 		],
 		"building effects" : [],
 		"jobs" : [

@@ -1,7 +1,5 @@
 extends Control
 
-signal play_game
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,4 +23,8 @@ func _on_exit_pressed():
 
 
 func _on_play_pressed():
-	emit_signal("play_game")
+	$SubMenues/GenerationMenu.visible = true
+
+
+func _on_credits_pressed():
+	$SubMenues/Credits.visible = true

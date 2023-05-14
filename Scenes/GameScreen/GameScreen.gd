@@ -36,6 +36,7 @@ func hide_town_center_text():
 
 
 func _ready():
+	GameData.reset_game()
 	var clamps = $Map.create_map(GameData.map_size, tile_size, GameData.padding, GameData.noise_scale, GameData.tile_altidude)
 	$"Scene/StaticBody3D"._change_pos_clamp(clamps[0], clamps[1])
 	GameData.resource_changed.connect(func(): tutorial())

@@ -65,6 +65,6 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "Fuck"
+horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
