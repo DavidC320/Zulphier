@@ -1,6 +1,5 @@
 extends StaticBody3D
 
-var tile_builder = load("res://Scenes/TileData/TileCreator.gd").new()
 
 var column:int
 var row:int
@@ -67,7 +66,7 @@ func change_tile(tile_c_name, print_children = false):
 	# Setting tile data
 	tile_name = tile_c_name
 	
-	tile_builder.change_tile(self, tile_c_name)
+	TileChanger.change_tile(self, tile_c_name)
 	update_tile()
 	
 	if print_children:
@@ -78,7 +77,7 @@ func change_building(building_data_name):
 	building_level = 1
 	building_exp = 0
 	building = building_data_name
-	tile_builder.create_building(self, building_data_name)
+	TileChanger.create_building(self, building_data_name)
 	change_building_layer()
 	set_level()
 
@@ -136,7 +135,7 @@ func duplicate_tile_output():
 func duplicate_tile_input(data):
 	tile_name = data.get("name")
 	$TileMesh.material_override = data.get("material")
-	tile_builder.create_building(self, data.get("building name"))
+	TileChanger.create_building(self, data.get("building name"))
 	building = data.get("building name")
 	change_building_layer()
 

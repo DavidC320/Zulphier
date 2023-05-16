@@ -1,7 +1,6 @@
 extends Node3D
 # Perlin stuff learned from Dave the Dev
 @export var tile_type_noise = FastNoiseLite.new()
-var tileData = load("res://Scenes/TileData/Tile_data.gd").new()
 
 # Basis stuff
 var tile_base = preload("res://Scenes/TileData/TileBase.tscn")
@@ -17,7 +16,7 @@ func create_tile(x, z, true_x, true_z, noise_scale, altitude_offset):
 	var amplified_z = z * noise_scale
 	var altitude = tile_type_noise.get_noise_2d(amplified_x, amplified_z) 
 	var current_tile_name = null
-	for data in tileData.perlin_gnerate_tile_list:
+	for data in TileChanger.tile_generation_map:
 		if altitude < data[0]:
 			current_tile_name = data[1]
 			break
@@ -68,5 +67,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

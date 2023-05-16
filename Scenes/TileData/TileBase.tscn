@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cn7at7u6n475p"]
 
 [ext_resource type="Script" path="res://Scenes/TileData/tile.gd" id="1_vd34r"]
-[ext_resource type="AudioStream" uid="uid://cso3wjkhqtl74" path="res://resources/SFX/249819__spookymodem__magic-smite.wav" id="2_43uup"]
+[ext_resource type="AudioStream" uid="uid://db3psf8p1dmxw" path="res://resources/SFX/249819__spookymodem__magic-smite.wav" id="2_43uup"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j3qg2"]
 

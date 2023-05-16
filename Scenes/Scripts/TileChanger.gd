@@ -1,4 +1,23 @@
-extends "res://Scenes/TileData/Tile_data.gd"
+extends Node
+# scripts
+
+var tileData = load("res://Scenes/Scripts/TileData.gd").new()
+var buildingData = load("res://Scenes/Scripts/BuildingData.gd").new()
+
+# Tile data
+var tile_dictonary:Dictionary = self.list_to_dict_converter(tileData.tile_list)
+var tile_generation_map:Array = tileData.perlin_gnerate_tile_list
+
+# Building data
+var building_dictonary:Dictionary = self.list_to_dict_converter(buildingData.building_list)
+var building_settings:Dictionary = buildingData.settings_dict
+
+func list_to_dict_converter(dictonary):
+	var new_dict = {}
+	for item in dictonary:
+		var name = item.get("name").to_lower()
+		new_dict[name] = item
+	return new_dict
 
 var job_scene = preload("res://Scenes/TileData/Jobs/job_data.tscn")
 
@@ -8,8 +27,7 @@ var job_scene = preload("res://Scenes/TileData/Jobs/job_data.tscn")
 ######################
 
 func contruction_bonus(tile, value_change= 1):
-	var bonuses = building_dict.get(tile.building.to_lower()).get("building effects")
-	
+	var bonuses = building_dictonary.get(tile.building_name.to_lower()).get("building effects")
 	if not tile.display_tile:
 		
 		for bonus in bonuses:
@@ -19,7 +37,7 @@ func contruction_bonus(tile, value_change= 1):
 
 func load_building_model(building_name):
 	"used to get the glb file for a building"
-	var building = building_dict.get(building_name).get("model")
+	var building = building_dictonary.get(building_name).get("model")
 	var loaded_building = null
 	
 	if building: # loads the model could be found
@@ -44,13 +62,10 @@ func create_building(tile, building_name):
 	directly change the current building directly"""
 	if building_name:
 		var true_name = building_name.to_lower()
-		
-		# adding the building model into the building spatial
-		# if the tile has a building
 		delete_building_model(tile)
-		var building_data = building_dict.get(true_name)
+		var building_data = building_dictonary.get(true_name)
 		
-		tile.building = building_data.get("name")
+		# Data
 		tile.building_name = building_data.get("name")
 		
 		# get available items
@@ -58,6 +73,7 @@ func create_building(tile, building_name):
 		if availabe_buildings == null:
 			availabe_buildings = []
 		tile.building_buildings = availabe_buildings
+		
 		var availabe_tiles = building_data.get("available tiles")
 		if availabe_tiles == null:
 			availabe_tiles = []
@@ -68,8 +84,8 @@ func create_building(tile, building_name):
 		building_node.add_child(loaded_building)
 		
 		
-		var building_settings = building_data.get("settings")
-		var setting_data = settings_dict.get(building_settings)
+		var setting_name = building_data.get("settings")
+		var setting_data = building_settings.get(setting_name)
 
 		var avi_levels = setting_data.get("levels")
 		if avi_levels == null:
@@ -90,7 +106,7 @@ func create_building(tile, building_name):
 		delete_building_model(tile)
 
 
-func add_building(tile, tile_data):
+func generate_building(tile, tile_data):
 	"This is used to generate buildings on world creation"
 # can have buildings
 	var prebuild = tile_data.get("create building")
@@ -117,17 +133,13 @@ func random_from_list(list_ob):
 
 
 func change_tile(tile, tile_name):
-	var tile_data = dictonary_of_tiles.get(tile_name)
+	var tile_data = tile_dictonary.get(tile_name)
 	if tile_data:
-		# tile name
 		tile.tile_name = tile_data.get("name")
-		# tile material
 		tile.tile_material = tile_data.get("material")
-		# tile buildins
 		tile.tile_buildings = tile_data.get("available buildings")
-		# tile tiles
 		tile.tile_tiles = tile_data.get("available tiles")
 		
-		add_building(tile, tile_data)
+		generate_building(tile, tile_data)
 		tile.set_level()
 		
