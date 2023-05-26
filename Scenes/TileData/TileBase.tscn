@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn7at7u6n475p"]
+[gd_scene load_steps=12 format=3 uid="uid://cn7at7u6n475p"]
 
 [ext_resource type="Script" path="res://Scenes/TileData/tile.gd" id="1_vd34r"]
 [ext_resource type="AudioStream" uid="uid://db3psf8p1dmxw" path="res://resources/SFX/249819__spookymodem__magic-smite.wav" id="2_43uup"]
+[ext_resource type="PackedScene" uid="uid://ceownci4gfyay" path="res://Scenes/TileData/BuildingBase/BuildingBase.tscn" id="2_v88ts"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j3qg2"]
 
@@ -158,7 +159,7 @@ script = ExtResource("1_vd34r")
 [node name="TileMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_j3qg2")
 
-[node name="BuildingPos" type="Node3D" parent="TileMesh"]
+[node name="BuildingBase" parent="TileMesh" instance=ExtResource("2_v88ts")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 
 [node name="Jobs" type="Node" parent="."]

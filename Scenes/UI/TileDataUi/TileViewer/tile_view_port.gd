@@ -9,6 +9,9 @@ func change_show_tile(tile_name):
 func change_show_building(building_name):
 	$SubViewport/Node3D/TileBase.change_building(building_name)
 
+func add_show_decoration(decoration_name):
+	$SubViewport/Node3D/TileBase.add_decoration(decoration_name)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

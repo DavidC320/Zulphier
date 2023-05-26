@@ -317,6 +317,7 @@ var building_list = [
 	"show" : [],
 	"available buildings" : [],
 	"available tiles" : [],
+	"available decorations" : ["locker", "bin", "bench"],
 	"model" : "res://resources/Models/Lumber mill.glb"
 },
 {
@@ -341,6 +342,7 @@ var building_list = [
 	"show" : [],
 	"available buildings" : [],
 	"available tiles" : [],
+	"available decorations" : ["locker", "bin", "bench"],
 	"model" : "res://resources/Models/Fishery.glb"
 },
 {
@@ -365,6 +367,7 @@ var building_list = [
 	"show" : [],
 	"available buildings" : [],
 	"available tiles" : [],
+	"available decorations" : ["locker", "bin", "bench"],
 	"model" : "res://resources/Models/Mine.glb"
 }
 ################

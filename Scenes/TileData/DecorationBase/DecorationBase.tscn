@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://baii8lbd0ilj"]
+
+[ext_resource type="Script" path="res://Scenes/TileData/DecorationBase/DecorationBase.gd" id="1_q5wt4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qkfu8"]
+
+[node name="Decobase" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("1_q5wt4")
+
+[node name="DecoSpatial" type="Node3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="DecoSpatial"]
+visible = false
+
+[node name="PlaceholderDeco" type="MeshInstance3D" parent="DecoSpatial/Node3D"]
+mesh = SubResource("SphereMesh_qkfu8")
+skeleton = NodePath("../../..")

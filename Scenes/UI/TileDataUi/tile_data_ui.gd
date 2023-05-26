@@ -11,6 +11,7 @@ var current_tile = null
 # contiatners
 @onready var tile_contianer = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Tiles
 @onready var building_contianer = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Buildings
+@onready var decoration_container = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Decorations
 @onready var job_contianer = $HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Jobs
 
 # sounds
@@ -30,13 +31,13 @@ func update_ui(selected_tile):
 	var tile_data = selected_tile.duplicate_tile_output()
 	tileVisulizer.change_tile(tile_data)
 	
-	current_tile.exp_change.connect(func(): update_level_label())
-	current_tile.level_up.connect(func(): update_ui(current_tile))
+	current_tile.building.exp_change.connect(func(): update_level_label())
+	current_tile.building.level_up.connect(func(): update_ui(current_tile))
 
 	tileNameLabel.text = current_tile.tile_name
-	if current_tile.building_name.length() > 0:
+	if current_tile.building.building_name.length() > 0:
 		buildingNameLabel.visible = true
-		buildingNameLabel.text = "Lv: %s | %s" % [current_tile.building_level, current_tile.building_name]
+		buildingNameLabel.text = "Lv: %s | %s" % [current_tile.building.building_level, current_tile.building.building_name]
 		level_label.visible = true
 		update_level_label()
 	else:
@@ -44,21 +45,25 @@ func update_ui(selected_tile):
 		level_label.visible = false
 
 	var data = current_tile.get_available_items()
+	print(data)
 	var tiles = data[1]
 	var buildings = data[0]
-	var jobs = data[2]
+	var decorations = data[2]
+	var jobs = data[3]
 	var connection = GameData.check_for_connections()
 	# Tiles
 	tile_contianer.update_ui(tiles, connection)
 	# Buildings
 	building_contianer.update_ui(buildings, connection)
+	# Decorations
+	decoration_container.update_ui(decorations, connection)
 	# Jobs
 	job_contianer.update_ui(jobs, connection)
 
 
 
 func update_level_label():
-	if current_tile.maxed_level:
+	if current_tile.building.maxed_level:
 			level_label.text = "Maxed"
 	else:
 		level_label.text = "%s / %s" % [current_tile.building_exp, current_tile.building_level_up]
@@ -72,10 +77,14 @@ func buy_item(container_node):
 		tile_sfx.play()
 		tileVisulizer.change_show_tile(item)
 		current_tile.change_tile(item)
-	else:
+	elif mode == "building":
 		build_sfx.play()
 		tileVisulizer.change_show_building(item)
 		current_tile.change_building(item)
+	else:
+		print("decoration")
+		tileVisulizer.add_show_decoration(item)
+		current_tile.add_decoration(item)
 	update_ui(current_tile)
 
 
@@ -100,6 +109,9 @@ func _ready():
 	# Buildings
 	building_contianer.buy_item.connect(func(): buy_item(building_contianer))
 	building_contianer.show_item.connect(func(): show_item(building_contianer))
+
+	decoration_container.buy_item.connect(func(): buy_item(decoration_container))
+	decoration_container.show_item.connect(func(): show_item(decoration_container))
 
 	visible = false
 

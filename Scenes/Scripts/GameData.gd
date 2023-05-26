@@ -89,7 +89,7 @@ func singular_string_checks(check, item_data):
 	if check == "only":
 			for tile_row in map_data:
 				for tile in tile_row:
-					if tile.building_name == item_data.get("name"):
+					if tile.building.building_name == item_data.get("name"):
 						show = false
 	return show
 	
@@ -98,12 +98,12 @@ func array_check(check, item_data):
 	var check_method = check[0]
 	var number = check[1]
 	if check_method == "level":
-		show = selected_tile.building_level >= number
+		show = selected_tile.building.building_level >= number
 	return show
 
 
 func check_connection_type(tile):
-	if tile.tile_name.to_lower() in ["road", "foundation", "dock"] or tile.building_name.to_lower() == "town center":
+	if tile.tile_name.to_lower() in ["road", "foundation", "dock"] or tile.building.building_name.to_lower() == "town center":
 		return true
 	return false
 

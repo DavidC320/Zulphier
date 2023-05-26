@@ -4,10 +4,8 @@ var colortext = load("res://Scenes/UI/TileDataUi/ColoredTextLabel/CostTextLabel.
 var change_button = load("res://Scenes/UI/TileDataUi/ChangeButton/ChangeButton.tscn")
 var job_ui = load("res://Scenes/UI/job_ui/Job_ui.tscn")
 
-var tile_builder = load("res://Scenes/TileData/TileCreator.gd").new()
-
 @export var category_name:String = "Category"
-@export_enum("tile", "building", "job", "reward", "cost") var category_mode:String
+@export_enum("tile", "building", "job", "decoration") var category_mode:String
 @export var color:Color
 @export var child_color:Color
 @export var disable_if_no_connection:bool
@@ -24,7 +22,7 @@ signal show_item
 # nodes
 @onready var textLabel = $VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel
 @onready var show_button = $VBoxContainer/MarginContainer/VBoxContainer/ShowButton
-
+@onready var container_of_items = $VBoxContainer/list
 
 func get_selected():
 	return [selected_item, selected_mode]
@@ -38,41 +36,36 @@ func update_ui(items, connected=true):
 	if items == null:
 		items = []
 
-	for child in $VBoxContainer/list.get_children():
+	for child in container_of_items.get_children():
 		child.queue_free()
 
 	if not connected and disable_if_no_connection:
-		$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = "No %s" % category_name
+		textLabel.text = "No %s" % category_name
 		show_button.disabled = true
 		return
 
 	for item in items:
 		if category_mode == "tile":
-			data = tile_builder.dictonary_of_tiles.get(item)
+			data = TileChanger.tile_dictonary.get(item)
 			add_change_button_ui(data, "tile")
 		elif category_mode == "building":
-			data = tile_builder.building_dict.get(item)
+			data = TileChanger.building_dictonary.get(item)
 			add_change_button_ui(data, "building")
+		elif category_mode == "decoration":
+			data = TileChanger.decoration_dictonary.get(item)
+			add_change_button_ui(data, "decoration")
 		elif category_mode == "job":
 			if GameData.check_job_show(item.job_show_reqs):
 				job = job_ui.instantiate()
 				job.update_job_ui(item)
-				$VBoxContainer/list.add_child(job)
-		elif category_mode == "reward":
-			label = colortext.instantiate()
-			label.set_data(item, true)
-			$VBoxContainer/list.add_child(label)
-		elif category_mode == "cost":
-			label = colortext.instantiate()
-			label.set_data(item)
-			$VBoxContainer/list.add_child(label)
+				container_of_items.add_child(job)
 	
-	if $VBoxContainer/list.get_child_count() <= 0:
-		$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = "No %s" % category_name
-		$VBoxContainer/MarginContainer/VBoxContainer/ShowButton.disabled = true
+	if container_of_items.get_child_count() <= 0:
+		textLabel.text = "No %s" % category_name
+		show_button.disabled = true
 	else:
-		$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = category_name
-		$VBoxContainer/MarginContainer/VBoxContainer/ShowButton.disabled = false
+		textLabel.text = category_name
+		show_button.disabled = false
 
 func change_item(item_data:Dictionary, item_type:String, change_type:String):
 	selected_item = item_data
@@ -97,7 +90,7 @@ func add_change_button_ui(data, ui_mode):
 	button.update_change_button(data, show_check, child_color)
 	button.buy_pressed.connect(func(): update_selected_item(data, ui_mode, "buy"))
 	button.show_pressed.connect(func(): update_selected_item(data, ui_mode, "show"))
-	$VBoxContainer/list.add_child(button)
+	container_of_items.add_child(button)
 
 func update_selected_item(data, ui_mode, action):
 	selected_item = data.get("name").to_lower()
@@ -109,10 +102,9 @@ func update_selected_item(data, ui_mode, action):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
 	$VBoxContainer/MarginContainer/ColorRect.color = color
-	$VBoxContainer/MarginContainer/VBoxContainer/ItemNameLabel.text = category_name
-	$VBoxContainer/list.add_theme_constant_override("separation", seperation_num)
+	textLabel.text = category_name
+	container_of_items.add_theme_constant_override("separation", seperation_num)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -121,4 +113,4 @@ func _process(delta):
 
 
 func _on_show_button_pressed():
-	$VBoxContainer/list.visible = not $VBoxContainer/list.visible
+	container_of_items.visible = not container_of_items.visible

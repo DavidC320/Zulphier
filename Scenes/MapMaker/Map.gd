@@ -20,12 +20,14 @@ func create_tile(x, z, true_x, true_z, noise_scale, altitude_offset):
 		if altitude < data[0]:
 			current_tile_name = data[1]
 			break
-	
+	print(tile)
+	print(current_tile_name)
+	print(true_x, true_z)
+	add_child(tile)
 	tile.change_tile(current_tile_name)
 	
 	tile.column = true_x
 	tile.row = true_z
-	add_child(tile)
 	tile.global_position = Vector3(x, altitude * altitude_offset, z)
 	return tile
 

@@ -12,48 +12,17 @@ var tile_material = null
 var tile_buildings = []  # what can be built on this tile
 var tile_tiles = []  # what this tile can be changed to
 
-
-# building data
-var building = null
-var building_name = ""
-
-var maxed_level = false
-var building_level = 1
-var building_exp = 0
-var building_level_up = 100
-var building_levels = []
-
-var building_settings = {}
-var job_list = []
-var building_buildings = []  # what can be built on this tile
-var building_tiles = []  # what this tile can be changed to
-
 @export var display_tile = false
 
-signal exp_change
-signal level_up
+# building
+@onready var building = $TileMesh/BuildingBase
 
 
 func get_available_items():
-	var building_pos = $"TileMesh/BuildingPos"
-	if building_pos.get_child_count() > 0:
-		return [building_buildings, building_tiles, job_list]
+	if building.building_present:
+		return building.get_building_data()
 	else:
-		return [tile_buildings, tile_tiles, []]
-
-
-func add_job(job_node):
-	if not display_tile:
-		job_node.job_completed.connect(func(): add_exp(job_node.job_exp))
-		$Jobs.add_child(job_node)
-		job_list.append(job_node)
-
-func clear_jobs():
-	if not display_tile:
-		job_list.clear()
-		for job in $Jobs.get_children():
-			GameData.change_resource("population", job.number_of_workers)
-			$Jobs.remove_child(job)
+		return [tile_buildings, tile_tiles, [], []]
 
 
 ###############################################################################
@@ -74,12 +43,11 @@ func change_tile(tile_c_name, print_children = false):
 		
 
 func change_building(building_data_name):
-	building_level = 1
-	building_exp = 0
-	building = building_data_name
-	TileChanger.create_building(self, building_data_name)
-	change_building_layer()
-	set_level()
+	building.change_building(building_data_name)
+
+
+func add_decoration(decoration_name):
+	building.add_decoration(decoration_name)
 
 func update_tile():
 	$TileMesh.material_override = load(tile_material)
@@ -90,29 +58,6 @@ func update_tile():
 ##################
 # Setting levels #
 ##################
-
-func set_level():
-	if building_levels.size() < building_level:
-		maxed_level = true
-		return
-	else:
-		maxed_level = false
-	
-	var exp_needed_index = building_level - 1
-	var exp_need = building_levels[exp_needed_index]
-	print(exp_need)
-	building_level_up = exp_need
-		
-func add_exp(number):
-	if not maxed_level:
-		building_exp += number
-		if building_exp >= building_level_up:
-			building_exp = 0
-			building_level += 1
-			set_level()
-			$Level_up.play()
-			emit_signal("level_up")
-		emit_signal("exp_change")
 	
 
 ##################
@@ -127,7 +72,8 @@ func duplicate_tile_output():
 	var data = {
 		"name" : tile_name,
 		"material" : $TileMesh.material_override, 
-		"building name" : building
+		"building name" : building.building_name.to_lower(),
+		"decoration names" : building.get_duplicaion_data()
 		}
 	return data
 
@@ -135,25 +81,21 @@ func duplicate_tile_output():
 func duplicate_tile_input(data):
 	tile_name = data.get("name")
 	$TileMesh.material_override = data.get("material")
-	TileChanger.create_building(self, data.get("building name"))
-	building = data.get("building name")
-	change_building_layer()
+	print("building name:" + data.get("building name"))
+	building.change_building(data.get("building name"))
+	building.clear_decorations()
+	for deco in data.get("decoration names"):
+		print(deco)
+		building.add_decoration(deco[0], deco[1])
 
 ################################
 # Duplicating tile data to ui  #
 ################################
-
-func change_building_layer():
-	var building_pos = $"TileMesh/BuildingPos"
-	if building_pos.get_children() and display_tile:
-			var building_model = building_pos.get_child(0).get_child(0)
-			building_model.layers = 2
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if display_tile:
 		$TileMesh.layers = 2
-		change_building_layer()
+		building.display_tile = true
 	
 
 
@@ -167,3 +109,4 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	$"Animations/TileHover".play_backwards("TileHover")
+	

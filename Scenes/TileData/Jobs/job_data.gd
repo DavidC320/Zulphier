@@ -14,6 +14,8 @@ var rewards:Array = []
 var job_exp:int
 var job_show_reqs:Array
 
+var parent_data
+
 signal job_completed
 signal job_stopped
 
@@ -48,13 +50,15 @@ func change_workers(number):
 	if check_if_a_population:
 		# changing the number of workers in this job
 		var new_total_workers = number_of_workers + number
+		var true_worker_cap = worker_cap + parent_data.worker_cap_bonus
+
 		var global_worker_change = number * -1
 		if new_total_workers < 0: # number will be negative, but adds to population
 			number_of_workers = 0
 			global_worker_change = number_of_workers
-		elif new_total_workers > worker_cap: # number will be positive, but takes from population
-			number_of_workers = worker_cap
-			global_worker_change = number_of_workers - worker_cap
+		elif new_total_workers > true_worker_cap: # number will be positive, but takes from population
+			number_of_workers = true_worker_cap
+			global_worker_change = number_of_workers - true_worker_cap
 		else:
 			number_of_workers = new_total_workers
 		GameData.change_resource("population", global_worker_change)
@@ -67,15 +71,23 @@ func stop_job():
 
 
 func start_job(repeat_on):
-	$JobTimer.wait_time = job_time/ number_of_workers
+	#nodes
+	var job_timer = $JobTimer
+
+	#data
+	var time_bonus = parent_data.job_time_decrease
+
+	var time_length = time_bonus * (job_time/ number_of_workers)
+
+	job_timer.wait_time = time_length
 	job_in_session = true
 	job_on_repeat = repeat_on
-	$JobTimer.start()
+	job_timer.start()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	parent_data = get_parent().get_parent()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,7 +103,9 @@ func _on_job_timer_timeout():
 
 func give_reward():
 	"This will give the player a reward for compelting a job"
+	var resource_bonus = parent_data.resource_bonus
+
 	for reward in rewards:
 		var item = reward[0]
-		var quantity = reward[1]
+		var quantity = reward[1] * resource_bonus
 		GameData.change_resource(item, quantity)
