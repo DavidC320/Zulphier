@@ -1,0 +1,244 @@
+[gd_scene load_steps=5 format=3 uid="uid://y8k761tideru"]
+
+[ext_resource type="PackedScene" uid="uid://bwdww056mw4p3" path="res://Scenes/UI/TileDataUi/TileViewer/tile_view_port.tscn" id="1_42715"]
+[ext_resource type="Script" path="res://Scenes/UI/TileData2.0/InfoWindow/InfoWindow.gd" id="1_udmd3"]
+[ext_resource type="PackedScene" uid="uid://bs6grd0bpn4i5" path="res://Scenes/UI/TileData2.0/InfoListContianer/info_contianer.tscn" id="2_wtuvy"]
+[ext_resource type="PackedScene" uid="uid://dsvf4ieiqkcva" path="res://Scenes/UI/TileData2.0/WindowCategory/WindowCategory.tscn" id="4_jfole"]
+
+[node name="InfoWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udmd3")
+
+[node name="Close window" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+
+[node name="ColorRect" type="ColorRect" parent="Close window"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.52549)
+
+[node name="Info" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Info"]
+layout_mode = 2
+color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" parent="Info/VBoxContainer/HBoxContainer" instance=ExtResource("1_42715")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Item Name: "
+
+[node name="Label2" type="Label" parent="Info/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Item Type: "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Info/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(569, 0)
+layout_mode = 2
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+
+[node name="itemDataScroll" type="ScrollContainer" parent="Info/VBoxContainer"]
+visible = false
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="requirments" type="HBoxContainer" parent="Info/VBoxContainer/itemDataScroll"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="requirments" type="MarginContainer" parent="Info/VBoxContainer/itemDataScroll/requirments"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments"]
+layout_mode = 2
+color = Color(0.427451, 0.427451, 0.427451, 1)
+
+[node name="requirmentsList" type="VBoxContainer" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments/requirmentsList"]
+layout_mode = 2
+text = "Requirments"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments/requirmentsList"]
+layout_mode = 2
+
+[node name="show_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Show"
+info_type = "requirment"
+
+[node name="standered_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Standard"
+info_type = "requirment"
+
+[node name="cost_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/requirments/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Cost"
+info_type = "cost"
+
+[node name="Bonuses" type="MarginContainer" parent="Info/VBoxContainer/itemDataScroll/requirments"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses"]
+layout_mode = 2
+color = Color(0.427451, 0.427451, 0.427451, 1)
+
+[node name="requirmentsList" type="VBoxContainer" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses/requirmentsList"]
+layout_mode = 2
+text = "Bonuses"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses/requirmentsList"]
+layout_mode = 2
+
+[node name="Bonus_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Bonus"
+info_type = "bonuses"
+
+[node name="contruction_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Construction"
+info_type = "bonuses"
+
+[node name="flags_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Bonuses/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Flags"
+info_type = "general"
+
+[node name="Available" type="MarginContainer" parent="Info/VBoxContainer/itemDataScroll/requirments"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Info/VBoxContainer/itemDataScroll/requirments/Available"]
+layout_mode = 2
+color = Color(0.427451, 0.427451, 0.427451, 1)
+
+[node name="requirmentsList" type="VBoxContainer" parent="Info/VBoxContainer/itemDataScroll/requirments/Available"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/itemDataScroll/requirments/Available/requirmentsList"]
+layout_mode = 2
+text = "Available
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/VBoxContainer/itemDataScroll/requirments/Available/requirmentsList"]
+layout_mode = 2
+
+[node name="Tile_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Available/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Tile"
+info_type = "general"
+
+[node name="building_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Available/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Building"
+info_type = "general"
+
+[node name="decoration_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Available/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Decorations"
+info_type = "general"
+
+[node name="job_contianer" parent="Info/VBoxContainer/itemDataScroll/requirments/Available/requirmentsList/HBoxContainer" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+info_name = "Jobs"
+info_type = "general"
+
+[node name="JobData" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="data" type="VBoxContainer" parent="Info/VBoxContainer/JobData"]
+layout_mode = 2
+
+[node name="general" type="HBoxContainer" parent="Info/VBoxContainer/JobData/data"]
+layout_mode = 2
+
+[node name="jobInfo" parent="Info/VBoxContainer/JobData/data/general" instance=ExtResource("4_jfole")]
+layout_mode = 2
+category_name = "Job Info"
+stat_list = ["Job Time", "Worker Cap"]
+
+[node name="BonusInfo" parent="Info/VBoxContainer/JobData/data/general" instance=ExtResource("4_jfole")]
+layout_mode = 2
+category_name = "Bonus Info"
+stat_list = ["Time Decrease", "Cap Increase", "Resource Increase"]
+
+[node name="TotalInfo" parent="Info/VBoxContainer/JobData/data/general" instance=ExtResource("4_jfole")]
+layout_mode = 2
+category_name = "Total"
+stat_list = ["Time", "Cap"]
+
+[node name="rewards" type="HBoxContainer" parent="Info/VBoxContainer/JobData/data"]
+layout_mode = 2
+
+[node name="Infocontianer" parent="Info/VBoxContainer/JobData/data/rewards" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+size_flags_horizontal = 1
+info_name = "Rewards"
+info_type = "general"
+
+[node name="Infocontianer2" parent="Info/VBoxContainer/JobData/data/rewards" instance=ExtResource("2_wtuvy")]
+layout_mode = 2
+size_flags_horizontal = 10
+info_name = "Total"
+info_type = "general"
+
+[node name="ControlPanel" type="MarginContainer" parent="Info/VBoxContainer/JobData"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Info/VBoxContainer/JobData/ControlPanel"]
+layout_mode = 2
+color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/VBoxContainer/JobData/ControlPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/JobData/ControlPanel/VBoxContainer"]
+layout_mode = 2
+text = "Job control"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Close Window"

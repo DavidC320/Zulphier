@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs6grd0bpn4i5"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TileData2.0/InfoListContianer/info_contianer.gd" id="1_iwdib"]
+
+[node name="Infocontianer" type="MarginContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_iwdib")
+hide_if_empty = null
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="InfoList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2

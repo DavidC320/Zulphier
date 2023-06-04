@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhmcqs3oerh55"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TileData2.0/UIElement/item_ui_element.gd" id="1_1tddr"]
+
+[node name="ItemUIElement" type="MarginContainer"]
+offset_right = 165.0
+offset_bottom = 66.0
+script = ExtResource("1_1tddr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.368627, 0.368627, 0.368627, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DataCont" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="requirmentColor" type="ColorRect" parent="VBoxContainer/DataCont"]
+layout_mode = 2
+color = Color(0.384314, 0.611765, 0, 0.521569)
+
+[node name="selectColor" type="ColorRect" parent="VBoxContainer/DataCont"]
+visible = false
+layout_mode = 2
+color = Color(1, 1, 1, 0.498039)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DataCont"]
+layout_mode = 2
+
+[node name="NamaCont" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/NamaCont"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.615686)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/NamaCont"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Item Name"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="showCont" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/showCont"]
+layout_mode = 2
+color = Color(0.709804, 0.709804, 0.709804, 0.247059)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/showCont"]
+layout_mode = 2
+text = "show met"
+horizontal_alignment = 1
+
+[node name="ReqCont2" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/ReqCont2"]
+layout_mode = 2
+color = Color(0.709804, 0.709804, 0.709804, 0.247059)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/ReqCont2"]
+layout_mode = 2
+text = "requirments met"
+horizontal_alignment = 1
+
+[node name="CostCont" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/CostCont"]
+layout_mode = 2
+color = Color(0.709804, 0.709804, 0.709804, 0.247059)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/CostCont"]
+layout_mode = 2
+text = "cost met"
+horizontal_alignment = 1
+
+[node name="MouseinputFeild" type="MarginContainer" parent="VBoxContainer/DataCont"]
+layout_mode = 2
+tooltip_text = "More Info"
+mouse_default_cursor_shape = 2
+
+[node name="Buy" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy
+"
+
+[connection signal="mouse_entered" from="VBoxContainer/DataCont/MouseinputFeild" to="." method="_on_mouseinput_feild_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/DataCont/MouseinputFeild" to="." method="_on_mouseinput_feild_mouse_exited"]

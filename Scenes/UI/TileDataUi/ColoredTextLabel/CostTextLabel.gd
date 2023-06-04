@@ -1,7 +1,7 @@
 extends MarginContainer
 
 @export var resource:String = "population"
-@export var number:int = 1
+@export var number = 1.0
 @export var ignore_check:bool = false
 
 

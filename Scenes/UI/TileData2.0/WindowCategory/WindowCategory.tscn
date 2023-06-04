@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsvf4ieiqkcva"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TileData2.0/WindowCategory/WindowCategory.gd" id="1_1tj86"]
+
+[node name="WindowCategory" type="VBoxContainer"]
+script = ExtResource("1_1tj86")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Info Name"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StatContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/StatContainer"]
+layout_mode = 2
+text = "Stat Name"
+
+[node name="NumContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Label2" type="Label" parent="HBoxContainer/NumContainer"]
+layout_mode = 2
+text = ": ?"

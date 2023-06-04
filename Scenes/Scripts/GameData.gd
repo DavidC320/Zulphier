@@ -52,6 +52,60 @@ func reset_game():
 	
 	center = 0
 
+####################
+# New check system #
+####################
+func check_item_requirments(item_data:Dictionary, requirment_list:Array):
+	pass
+	var all_checks_met = true
+	
+	for requirment in requirment_list:
+		if not all_checks_met:
+			return false
+		if typeof(requirment) == TYPE_STRING:
+			all_checks_met = string_requirment(requirment, item_data)
+
+		elif typeof(requirment) == TYPE_ARRAY:
+			all_checks_met = array_requirment(requirment, item_data)
+	
+	return true
+
+func string_requirment(requirment:String, item_data:Dictionary):
+	if requirment == "only building":
+		for tile_row in map_data:
+			for tile in tile_row:
+				if tile.building.building_name == item_data.get("name"):
+					return false
+	
+	elif requirment == "anywhere":
+		return true
+	
+	elif requirment == "connection":
+		return check_for_connections() 
+
+	else:
+		print("this string requirment doesn't exist | %s | %s |" % [requirment, item_data.get("name")])
+		return false
+
+func array_requirment(requiment_array:Array, item_data:Dictionary):
+	var requirment = requiment_array[0]
+	var second_var = requiment_array[1] 
+
+	if requirment == "building over level":
+		return selected_tile.building.building_level >= second_var
+
+	elif requirment == "building is level":
+		return selected_tile.building.building_level == second_var
+
+	else:
+		print("this requirment doesn't exist | %s | %s |" % [requirment, item_data.get("name")])
+		return false
+####################
+# New check system #
+####################
+
+
+
 func check_job_show(checks):
 	var show = true
 	

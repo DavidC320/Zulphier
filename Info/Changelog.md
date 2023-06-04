@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 6/4/2023
+
+Started working on the new UI controller
+
+Started working the info window
+
 ## 5/25/2023
 
 buildings can now have decorations.

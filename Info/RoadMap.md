@@ -50,6 +50,10 @@
 
 ## The people Update
 
+This update will add physical people into the game that can walk around and level up.
+
 ## The Nations Update
+
+This update will add new playable nations, game modes, and acheivements to the game.
 
 ## The Invasion Update
