@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs6ggf870ix6t"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TileData2.0/SpinBox/SpinBoxElement.gd" id="1_r73o3"]
+
+[node name="HBoxContainer2" type="MarginContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_r73o3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.305882, 0.305882, 0.305882, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0 / 99"
+horizontal_alignment = 1
+
+[node name="Less" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " < "
+
+[node name="More" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " > "
+
+[node name="Default" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Reset"
+text = " @ "
+
+[connection signal="pressed" from="HBoxContainer/Less" to="." method="_on_less_pressed"]
+[connection signal="pressed" from="HBoxContainer/More" to="." method="_on_more_pressed"]
+[connection signal="pressed" from="HBoxContainer/Default" to="." method="_on_default_pressed"]

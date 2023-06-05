@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://t6l7ujo48sj2"]
+[gd_scene load_steps=4 format=3 uid="uid://t6l7ujo48sj2"]
 
 [ext_resource type="PackedScene" uid="uid://dhmcqs3oerh55" path="res://Scenes/UI/TileData2.0/UIElement/item_ui_element.tscn" id="1_7eiyj"]
 [ext_resource type="Script" path="res://Scenes/UI/TileData2.0/control_ui.gd" id="1_vigki"]
+[ext_resource type="PackedScene" uid="uid://y8k761tideru" path="res://Scenes/UI/TileData2.0/InfoWindow/InfoWindow.tscn" id="3_f7f3a"]
 
 [node name="ControlUI" type="Control"]
 layout_mode = 3
@@ -46,7 +47,7 @@ layout_mode = 2
 layout_mode = 2
 color = Color(0.172549, 0.403922, 1, 1)
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="tileButton" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Tiles"
@@ -58,7 +59,7 @@ layout_mode = 2
 layout_mode = 2
 color = Color(0.760784, 0.313726, 0, 1)
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+[node name="buildingButton" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Buildings"
@@ -70,7 +71,7 @@ layout_mode = 2
 layout_mode = 2
 color = Color(0.760784, 0, 0.772549, 1)
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer3"]
+[node name="decorationButton" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Decorations"
@@ -82,7 +83,7 @@ layout_mode = 2
 layout_mode = 2
 color = Color(0.341176, 0.537255, 0, 1)
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer4"]
+[node name="jobButton" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer4"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Jobs
@@ -100,9 +101,18 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="Datacont" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ItemUIElement" parent="VBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer/HBoxContainer" instance=ExtResource("1_7eiyj")]
+[node name="ItemUIElement" parent="VBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer/Datacont" instance=ExtResource("1_7eiyj")]
 layout_mode = 2
+
+[node name="InfoWindow" parent="." instance=ExtResource("3_f7f3a")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/tileButton" to="." method="_on_tile_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/buildingButton" to="." method="_on_building_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/decorationButton" to="." method="_on_decoration_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer4/jobButton" to="." method="_on_job_button_pressed"]

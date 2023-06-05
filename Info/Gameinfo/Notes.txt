@@ -1,0 +1,39 @@
+6/4/2023
+
+///////////////////////////////
+Getting the New Tile UI to Work
+
+I have evrything nearly ready for use but I need to create a element for jobs.
+
+The job elementy should have a total worker label
+timer and progress progressbar
+exp
+and a quick work and stop job button
+
+Creating the job element
+I need to quickly set up a dublicate of the item ui element as it will share
+simulare structure.
+
+////////////////////////////////////
+Job Control Panel in the Info Window
+
+The Control panel will need these things.
+1. Info on the among of people in the job and cap
+2. A way to change the amount of workers in the job
+3. allow the job to run for a certain amount of times
+4. allow the job to repeat
+5. allow the job to stop
+
+Setting up labels
+I need to place the labels an buttons that I will use in this
+
+Creating widgets
+I noticed that I keep using a spin box like node so I need to create a
+base scene that will be used in other instances like assigning workers 
+and repeating nums.
+
+Creating a spin box
+The spin box needs to display a number and have controls such as a less, more,
+and reset button. then I need a way to set a minimum, maximum, and default number.
+
+Control panel is now complete but doesn't have any functionality yet.

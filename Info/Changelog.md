@@ -3,8 +3,11 @@
 ## 6/4/2023
 
 Started working on the new UI controller
-
 Started working the info window
+Started working on the job element for the controller
+
+Completed the job data window
+
 
 ## 5/25/2023
 

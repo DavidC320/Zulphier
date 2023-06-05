@@ -1,6 +1,5 @@
 extends MarginContainer
 
-
 var item_name:String
 var item_data:Dictionary
 var item_type:String
@@ -39,7 +38,7 @@ var missing_color = "#ff000085"
 var met_color = "#629c0085"
 
 
-func set_up_button(i_name:String, type:String, color:Color, show_failed_show:bool=false):
+func set_up_button(i_name:String, type:String, color, show_failed_show:bool=false):
 	# getting data
 	var data
 	if type == "tile":

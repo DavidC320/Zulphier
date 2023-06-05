@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://ntmnso3tdqjy"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TileData2.0/JobElement/job_element.gd" id="1_r8vyt"]
+
+[node name="JobElement" type="MarginContainer"]
+offset_right = 132.0
+offset_bottom = 156.0
+size_flags_horizontal = 4
+script = ExtResource("1_r8vyt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.368627, 0.368627, 0.368627, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DataCont" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="selectColor" type="ColorRect" parent="VBoxContainer/DataCont"]
+visible = false
+layout_mode = 2
+color = Color(1, 1, 1, 0.498039)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DataCont"]
+layout_mode = 2
+
+[node name="NamaCont" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/NamaCont"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.615686)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/NamaCont"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Job Name"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Workers" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/Workers"]
+layout_mode = 2
+color = Color(0.709804, 0.709804, 0.709804, 0.247059)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/Workers"]
+layout_mode = 2
+text = "Workers ? / ?"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="exp" type="MarginContainer" parent="VBoxContainer/DataCont/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/DataCont/VBoxContainer/exp"]
+layout_mode = 2
+color = Color(0.709804, 0.709804, 0.709804, 0.247059)
+
+[node name="Label" type="Label" parent="VBoxContainer/DataCont/VBoxContainer/exp"]
+layout_mode = 2
+text = "Exp: ?"
+horizontal_alignment = 1
+
+[node name="MouseinputFeild" type="MarginContainer" parent="VBoxContainer/DataCont"]
+layout_mode = 2
+tooltip_text = "More Info"
+mouse_default_cursor_shape = 2
+
+[node name="Buy2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Stop Job
+"
+
+[node name="Buy" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quick Assigne"
